@@ -67,5 +67,3 @@ class Instrument(Base):
 engine = create_engine('sqlite:///instruments.db')
 
 Base.metadata.create_all(engine)
-
-print("Database setup complete!")
