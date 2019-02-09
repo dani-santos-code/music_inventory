@@ -43,6 +43,7 @@ class Instrument(Base):
     name = Column(String(120), nullable = False)
     id = Column(Integer, primary_key = True)
     description = Column(String(250), nullable = False)
+    credit = Column(String(80))
     picture = Column(String(250), nullable = False)
     region_id = Column(Integer,ForeignKey('region.id'))
     region = relationship(Region)
@@ -59,11 +60,11 @@ class Instrument(Base):
            'picture': self.picture,
            'region': self.region,
            'user': self.user,
+           'credit': sekf.credit,
        }
 
 
 engine = create_engine('sqlite:///instruments.db')
-
 
 Base.metadata.create_all(engine)
 

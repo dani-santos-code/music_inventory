@@ -1,5 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
 {% for region in regions %}
-  <ul>
-    <li>{{region.name}}</li>
-  </ul>
+  <div class="grid_item">
+      <a href={{region.name.lower()}}>
+        <div class="region">
+            <h3>{{region.name}}</h3>
+          </div>
+      </a>
+  </div>
 {% endfor %}
+
+  <!-- {% for instrument in instruments %}
+    <div class="instrumentcard">
+      <h2>{{instrument.name}}</h2>
+      <p>{{instrument.description}}</p>
+      <img src='{{instrument.picture}}' height=60 width=60/>
+      {% if instrument.credit %}
+        <span>{{instrument.credit}}</span>
+      {% endif %}
+      {% for user in users %}
+        {% if instrument.user_id == user.id %}
+        <p>Added by <strong>{{user.name}}</strong></p>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endfor %} -->
+{% endblock %}

@@ -25,3 +25,6 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 ## Running the webapp:
 
 To get the app running, type in `python project.py`
+
+## Running tests:
+Make sure you install the `pytest` module by running `pip install pytest`. (You might need to use `sudo` here)

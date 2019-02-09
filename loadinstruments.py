@@ -41,15 +41,15 @@ session.commit()
 instrument1 = Instrument(user_id=1, name="Djembe",
                          description="Originating from West Africa, the djembe (also known as jembe is a small goblet drum that a musician generally plays with their bare hands.",
                          picture="https://s3.amazonaws.com/images.static.steveweissmusic.com/products/images/uploads/1132207_25730_popup.jpg",
-                         region=region1)
+                         region=region1, credit="Steve Weiss Music")
 
 session.add(instrument1)
 session.commit()
 
 instrument2 = Instrument(user_id=2, name="Mbira",
                          description="Originating in African culture, particularly in the Democratic Republic of Congo, the mbira consists of metal teeth attached to a wooden board.",
-                         picture="https://en.wikipedia.org/wiki/File:Mbira_dzavadzimu_1.jpg",
-                         region=region1)
+                         picture="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Mbira_dzavadzimu_1.jpg/1069px-Mbira_dzavadzimu_1.jpg",
+                         region=region1, credit="Wikipedia")
 
 session.add(instrument2)
 session.commit()
@@ -64,12 +64,12 @@ session.commit()
 instrument1 = Instrument(user_id=2, name="Idiophones",
                          description="Idiophones produce musical sound by vibrating when the body of the instrument itself is struck, stamped, shaken, scraped, rubbed, or plucked.",
                          picture="https://cdn.britannica.com/s:700x450/91/150591-004-44609FB8.jpg",
-                         region=region2)
+                         region=region2, credit="Britannica")
 
 instrument2 = Instrument(user_id=3, name="Membranophones",
                          description="Membranophones are instruments that have a skin or membrane stretched over a frame; musical sound is produced by striking or rubbing the membrane or by setting the membrane into motion with sound waves (as with a kazoo).",
                          picture="https://cdn.britannica.com/s:300x300/89/150589-004-B285F698.jpg",
-                         region=region2)
+                         region=region2, credit="Britannica")
 session.add(instrument2)
 session.commit()
 
@@ -83,7 +83,7 @@ session.commit()
 instrument1 = Instrument(user_id=1, name="Ocarina",
                          description="Originating within China approximately 12,000 years ago, the ocarina is an ancient flute instrument usually made from ceramic or clay. ",
                          picture="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/2016-01_Ocarina_front.jpg/500px-2016-01_Ocarina_front.jpg",
-                         region=region3)
+                         region=region3, credit="Wikipedia")
 
 session.add(instrument1)
 session.commit()
@@ -121,7 +121,7 @@ session.commit()
 instrument1 = Instrument(user_id=1, name="Didgeridoo",
                          description="From indigenous Australians comes the ever exotic didgeridoo which is rumored to have been around for over a thousand years.",
                          picture="https://images-na.ssl-images-amazon.com/images/I/61ffnSrQkAL._SL1500_.jpg",
-                         region=region5)
+                         region=region5, credit="Kent State University")
 
 session.add(instrument1)
 session.commit()

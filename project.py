@@ -17,8 +17,30 @@ session = DBSession()
 @app.route('/main/')
 def showRegions():
     regions = session.query(Region).all()
-    return render_template('main.html', regions=regions)
+    instruments = session.query(Instrument).all()
+    users = session.query(User).all()
+    print(users)
+    return render_template('main.html', regions=regions, instruments=instruments, users=users)
 
+@app.route('/asia/')
+def showAsianInstruments():
+    return render_template('asia.html')
+
+@app.route('/africa/')
+def showAfricanInstruments():
+    return render_template('africa.html')
+
+@app.route('/americas/')
+def showAmericanInstruments():
+    return render_template('americas.html')
+
+@app.route('/europe/')
+def showEuropeanInstruments():
+    return render_template('europe.html')
+
+@app.route('/oceania/')
+def showOceaniaInstruments():
+    return render_template('oceania.html')
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'
