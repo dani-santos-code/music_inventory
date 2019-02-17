@@ -54,9 +54,9 @@ instrument2 = Instrument(user_id=2, name="Mbira",
 session.add(instrument2)
 session.commit()
 
-# Instruments in the Americas
+# Instruments in the South America
 
-region2 = Region(name="Americas")
+region2 = Region(name="South America")
 
 session.add(region2)
 session.commit()
@@ -122,6 +122,22 @@ instrument1 = Instrument(user_id=1, name="Didgeridoo",
                          description="From indigenous Australians comes the ever exotic didgeridoo which is rumored to have been around for over a thousand years.",
                          picture="https://images-na.ssl-images-amazon.com/images/I/61ffnSrQkAL._SL1500_.jpg",
                          region=region5, credit="Kent State University")
+
+session.add(instrument1)
+session.commit()
+
+# Instruments in North america
+
+region6 = Region(name="North America")
+
+session.add(region6)
+session.commit()
+
+instrument1 = Instrument(user_id=1, name="Guitarron",
+                         description="The Guitarron is a large bass guitar. Guitarron translates to large guitar. The suffix means big or large. It has 6 strings.",
+                         picture="http://content.westmusic.com/wp-content/uploads/2019/02/Guitarron.png",
+                         region=region6, credit="West Music")
+
 
 session.add(instrument1)
 session.commit()

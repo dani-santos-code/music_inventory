@@ -12,6 +12,10 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+@app.route('/login/')
+def login():
+    return render_template('login.html')
+
 # Show all instruments
 @app.route('/')
 @app.route('/main/')
