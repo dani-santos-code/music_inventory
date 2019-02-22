@@ -22,11 +22,8 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 
 - To load dummy data, run `python loadinstruments.py`
 
-## Setting up Flask Login Manager:
 
-run `sudo pip install flask-login`
-
-## Setting up OAuth Library:
+## Setting up OAuth/Google API Library:
 
 run `sudo pip install google-api-python-client`
 

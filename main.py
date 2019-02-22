@@ -2,13 +2,12 @@ from flask import Flask, render_template, request, make_response, redirect, json
 import functools
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
-
 from authlib.client import OAuth2Session
+import credentials
 import google.oauth2.credentials
 import googleapiclient.discovery
 
 from database_setup import Base, Region, Instrument, User
-from config import Auth, DevConfig
 
 app = Flask(__name__)
 
@@ -19,6 +18,7 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
+# OAuth Credentials
 ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
 AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent'
 
@@ -117,9 +117,13 @@ def showAsianInstruments():
 def showAfricanInstruments():
     return render_template('africa.html')
 
-@app.route('/americas/')
-def showAmericanInstruments():
-    return render_template('americas.html')
+@app.route('/north_america/')
+def showNorthAmericanInstruments():
+    return render_template('north_america.html')
+
+@app.route('/south_america')
+def showSouthmericanInstruments():
+    return render_template('south_america.html')
 
 @app.route('/europe/')
 def showEuropeanInstruments():
