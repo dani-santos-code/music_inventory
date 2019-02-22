@@ -2,6 +2,8 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
+from sqlalchemy.dialects.postgresql import BOOLEAN, TEXT, TIMESTAMP
+import datetime
 
 Base = declarative_base()
 
@@ -11,6 +13,10 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
+    active = Column(BOOLEAN, default=False)
+    tokens = Column(TEXT)
+    avatar = Column(String(200))
+    created_at = Column(TIMESTAMP, default=datetime.datetime.utcnow())
 
     @property
     def serialize(self):
@@ -19,6 +25,10 @@ class User(Base):
            'name': self.name,
            'id': self.id,
            'email': self.email,
+           'active': self.active,
+           'tokens': self.tokens,
+           'avatar': self.avatar,
+           'created_at': self.created_at
        }
 
 

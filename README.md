@@ -22,10 +22,17 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 
 - To load dummy data, run `python loadinstruments.py`
 
-## Setting up Google Client:
+## Setting up Flask Login Manager:
 
-run `sudo pip install --upgrade google-auth google-auth-oauthlib google-auth-httplib2
-`
+run `sudo pip install flask-login`
+
+## Setting up OAuth Library:
+
+run `sudo pip install google-api-python-client`
+
+run `sudo pip install google-auth`
+
+run `sudo pip install authlib`
 
 ## Running the webapp:
 
