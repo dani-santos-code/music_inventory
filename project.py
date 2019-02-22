@@ -53,6 +53,15 @@ def login():
     login_session.permanent = True
     return redirect(uri, code=302)
 
+@app.route('/logout')
+@no_cache
+def logout():
+    login_session.pop(AUTH_TOKEN_KEY, None)
+    login_session.pop(AUTH_STATE_KEY, None)
+    login_session.pop(USER_INFO_KEY, None)
+
+    return redirect(BASE_URI, code=302)
+
 @app.route('/gCallback')
 @no_cache
 def google_auth_redirect():
