@@ -1,10 +1,5 @@
 from flask import Flask, render_template, request, make_response, redirect, jsonify, url_for, flash, session as login_session
-
-import json
-import os
 import functools
-
-from flask_login import login_required, current_user
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
 
@@ -74,8 +69,10 @@ def is_logged_in():
 def showDashboard():
     if is_logged_in():
         user_info = get_user_info()
+        flash('You have successfully logged in')
         return render_template('dashboard.html')
-    return redirect('main')
+    if not is_logged_in():
+        return redirect(url_for('showRegions'), code=302)
 
 def build_credentials():
     if not is_logged_in():

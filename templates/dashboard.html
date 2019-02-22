@@ -1,1 +1,9 @@
 <h1>This is the protected dashboard</h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {%for message in messages%}
+      <div> {{ message }}!</div>
+  {%endfor%}
+  {% endif %}
+{% endwith %}
