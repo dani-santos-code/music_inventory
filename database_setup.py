@@ -28,7 +28,7 @@ class User(Base):
            'active': self.active,
            'tokens': self.tokens,
            'avatar': self.avatar,
-           'created_at': self.created_at
+           'created_at': self.created_at,
        }
 
 
@@ -70,9 +70,8 @@ class Instrument(Base):
            'picture': self.picture,
            'region': self.region,
            'user': self.user,
-           'credit': sekf.credit,
+           'credit': self.credit,
        }
-
 
 engine = create_engine('sqlite:///instruments.db')
 

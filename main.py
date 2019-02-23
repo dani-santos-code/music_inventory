@@ -16,7 +16,11 @@ Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 
-# scope the session, otehr than that, a thread error will be raised
+"""Scope the session, other than that,
+a thread error will be raised
+More on that can be found at:
+https://docs.sqlalchemy.org/en/latest
+/orm/contextual.html"""
 
 session = scoped_session(DBSession)
 
@@ -105,7 +109,7 @@ def get_user_info():
     oauth2_client = googleapiclient.discovery.build('oauth2', 'v2', credentials=credentials)
     return oauth2_client.userinfo().get().execute()
 
-# JSON APIs to view Restaurant Information
+# JSON APIs to view Regions Information
 @app.route('/regions/JSON')
 def regionsJSON():
     regions = session.query(Region).all()
@@ -117,34 +121,51 @@ def showRegions():
     regions = session.query(Region).all()
     return render_template('main.html', regions=regions)
 
+def getInstruments(page_url):
+    name = page_url[20:].title()
+    name = name.replace("/", "")
+    if "_" in name:
+        name = name.replace("_", " ")
+    region = session.query(Region).filter_by(name=name).one()
+    instruments_per_region = session.query(Instrument).filter_by(region=region)
+    return instruments_per_region
+
 @app.route('/asia/')
 def showAsianInstruments():
     page_url = request.url.encode("utf-8")
-    name = page_url[20:].title()
-    name = name.replace("/", "")
-    region = session.query(Region).filter_by(name=name).one()
-    asian_instruments = session.query(Instrument).filter_by(region=region)
+    asian_instruments = getInstruments(page_url)
     return render_template('asia.html', asian_instruments=asian_instruments)
 
 @app.route('/africa/')
 def showAfricanInstruments():
-    return render_template('africa.html')
+    page_url = request.url.encode("utf-8")
+    african_instruments = getInstruments(page_url)
+    return render_template('africa.html', african_instruments=african_instruments)
 
 @app.route('/north_america/')
 def showNorthAmericanInstruments():
-    return render_template('north_america.html')
+    page_url = request.url.encode("utf-8")
+    north_american_instruments = getInstruments(page_url)
+    return render_template('north_america.html', north_american_instruments = north_american_instruments)
 
 @app.route('/south_america')
 def showSouthmericanInstruments():
-    return render_template('south_america.html')
+    page_url = request.url.encode("utf-8")
+    page_url = request.url.encode("utf-8")
+    south_american_instruments = getInstruments(page_url)
+    return render_template('south_america.html', south_american_instruments = south_american_instruments)
 
 @app.route('/europe/')
 def showEuropeanInstruments():
-    return render_template('europe.html')
+    page_url = request.url.encode("utf-8")
+    european_instruments = getInstruments(page_url)
+    return render_template('europe.html', european_instruments=european_instruments)
 
 @app.route('/oceania/')
 def showOceaniaInstruments():
-    return render_template('oceania.html')
+    page_url = request.url.encode("utf-8")
+    oceania_instruments = getInstruments(page_url)
+    return render_template('oceania.html', oceania_instruments=oceania_instruments)
 
 if __name__ == '__main__':
     app.secret_key = '\xf6\xbc\xe3\xfeD\xb5\xf8=\xd1\x80?\x13Hl\x81\x11'

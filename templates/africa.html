@@ -1,1 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
 <h1>African Instruments</h1>
+
+{% for instrument in african_instruments %}
+    <div class="instrumentcard">
+      <h2>{{instrument.name}}</h2>
+        <p>{{instrument.description}}</p>
+        <img src='{{instrument.picture}}' height=60 width=60/>
+        {% if instrument.credit %}
+            <span>{{instrument.credit}}</span>
+        {% endif %}
+  </div>
+{% endfor %}
+{% endblock %}

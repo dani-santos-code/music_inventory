@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+
 <h1>Asian Instruments</h1>
 
 {% for instrument in asian_instruments %}
@@ -10,3 +13,5 @@
         {% endif %}
   </div>
 {% endfor %}
+
+{% endblock %}
