@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, make_response, redirect, jsonify, url_for, flash, session as login_session
 import functools
 from sqlalchemy import create_engine, asc
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
 from authlib.client import OAuth2Session
-import credentials
 import google.oauth2.credentials
 import googleapiclient.discovery
 
@@ -16,7 +15,10 @@ engine = create_engine('sqlite:///instruments.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
-session = DBSession()
+
+# scope the session, otehr than that, a thread error will be raised
+
+session = scoped_session(DBSession)
 
 # OAuth Credentials
 ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
@@ -32,6 +34,9 @@ CLIENT_SECRET = 'T1iIGSdpiw9Tj-gPCnKQdyNy'
 AUTH_TOKEN_KEY = 'auth_token'
 AUTH_STATE_KEY = 'auth_state'
 USER_INFO_KEY = 'user_info'
+
+def remove_session(ex=None):
+    session.remove()
 
 def no_cache(view):
     @functools.wraps(view)
@@ -100,18 +105,26 @@ def get_user_info():
     oauth2_client = googleapiclient.discovery.build('oauth2', 'v2', credentials=credentials)
     return oauth2_client.userinfo().get().execute()
 
+# JSON APIs to view Restaurant Information
+@app.route('/regions/JSON')
+def regionsJSON():
+    regions = session.query(Region).all()
+    return jsonify(regions=[r.serialize for r in regions])
+
 @app.route('/')
 @app.route('/main/')
 def showRegions():
     regions = session.query(Region).all()
-    instruments = session.query(Instrument).all()
-    users = session.query(User).all()
-    # print(users)
-    return render_template('main.html', regions=regions, instruments=instruments, users=users)
+    return render_template('main.html', regions=regions)
 
 @app.route('/asia/')
 def showAsianInstruments():
-    return render_template('asia.html')
+    page_url = request.url.encode("utf-8")
+    name = page_url[20:].title()
+    name = name.replace("/", "")
+    region = session.query(Region).filter_by(name=name).one()
+    asian_instruments = session.query(Instrument).filter_by(region=region)
+    return render_template('asia.html', asian_instruments=asian_instruments)
 
 @app.route('/africa/')
 def showAfricanInstruments():
