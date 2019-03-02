@@ -208,6 +208,12 @@ def showEuropeanInstruments():
     european_instruments = session.query(Instrument).filter_by(region=region)
     return render_template('europe.html', european_instruments=european_instruments, user=user_info)
 
+@app.route('/regions/europe/JSON')
+def europeJSON():
+    region = session.query(Region).filter_by(name="Europe").one()
+    european_instruments = session.query(Instrument).filter_by(region=region)
+    return jsonify(european_instruments=[i.serialize for i in european_instruments])
+
 @app.route('/main/oceania/')
 @app.route('/oceania/')
 def showOceaniaInstruments():
@@ -218,6 +224,12 @@ def showOceaniaInstruments():
     region = session.query(Region).filter_by(name="Oceania").one()
     oceania_instruments = session.query(Instrument).filter_by(region=region)
     return render_template('oceania.html', oceania_instruments=oceania_instruments, user=user_info)
+
+@app.route('/regions/oceania/JSON')
+def oceaniaJSON():
+    region = session.query(Region).filter_by(name="Oceania").one()
+    oceania_instruments = session.query(Instrument).filter_by(region=region)
+    return jsonify(oceania_instruments=[i.serialize for i in oceania_instruments])
 
 # Create a new instrument per region
 @app.route('/<region_name>/create', methods=['GET', 'POST'])
