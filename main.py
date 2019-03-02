@@ -271,20 +271,20 @@ def editInstrument(instrument_id):
         return redirect('/login')
     editedInstrument = session.query(Instrument).filter_by(id=instrument_id).one()
     # print(editedInstrument.name)
+    # if request.method == 'POST':
+    user_info = get_user_info()
+    user_id = user_info["id"]
     if request.method == 'POST':
-        user_info = get_user_info()
-        user_id = user_info["id"]
-        if request.method == 'POST':
-            if request.form['name']:
-                editedInstrument.name = request.form['name']
-            if request.form['region']:
-                editedInstrument.region.name = request.form['region']
-            if request.form['description']:
-                editedInstrument.description = request.form['description']
-            if request.form['picture']:
-                editedInstrument.picture = request.form['picture']
-            if request.form['credit']:
-                editedInstrument.credit = request.form['credit']
+        if request.form['name']:
+            editedInstrument.name = request.form['name']
+        if request.form['region']:
+            editedInstrument.region.name = request.form['region']
+        if request.form['description']:
+            editedInstrument.description = request.form['description']
+        if request.form['picture']:
+            editedInstrument.picture = request.form['picture']
+        if request.form['credit']:
+            editedInstrument.credit = request.form['credit']
         session.add(editedInstrument)
         session.commit()
         flash('Instrument Successfully Edited')
