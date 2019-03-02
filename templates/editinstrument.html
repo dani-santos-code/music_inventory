@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row divider green">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1>Edit Instrument</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="#" method="POST">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" maxlength="100"
+          class="form-control"
+          name="name"
+          value="{{instrument.name}}">
+
+					<label for="region">Region:</label>
+					<input type="text" maxlength="100" class="form-control"
+					name="region" value="{{instrument.region.name}}"/>
+
+          <label for="price">Description</label>
+					<textarea maxlength="1000"
+          class="form-control"
+					name="description"
+          value="{{instrument.description}}"></textarea>
+
+          <label for="course">Picture URL (including http!):</label>
+          <textarea maxlength="250"
+          class="form-control"
+          name="picture"
+					value="{{instrument.picture}}"></textarea>
+
+          <label for="region">Region:</label>
+  				<input type="text"
+					maxlength="250"
+					class="form-control"
+					name="credit"
+          value="{{instrument.credit}}"/>
+
+          <button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
+					<a href = '{{url_for('showRegions')}}'>
+						<button class="btn btn-default delete">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="cta_create"><a href="/africa/create">Add an Instrument to African Instruments list!</a></div>
 
 <h1>African Instruments</h1>
 
@@ -10,6 +11,12 @@
         <img src='{{instrument.picture}}' height=60 width=60/>
         {% if instrument.credit %}
             <span>{{instrument.credit}}</span>
+        {% endif %}
+        {% if user %}
+        <div class="edit_and_delete">
+          <a class="userpref" href="/edit/{{instrument.id}}"><div>Edit</div></a>
+          <a class="userpref" href="/delete/{{instrument.id}}"><div>Delete</div></a>
+        </div>
         {% endif %}
   </div>
 {% endfor %}

@@ -52,7 +52,7 @@ class Instrument(Base):
 
     name = Column(String(120), nullable = False)
     id = Column(Integer, primary_key = True)
-    description = Column(String(250), nullable = False)
+    description = Column(String(500), nullable = False)
     credit = Column(String(80))
     picture = Column(String(250), nullable = False)
     region_id = Column(Integer,ForeignKey('region.id'))
@@ -65,12 +65,10 @@ class Instrument(Base):
        """Return object data in easily serializeable format"""
        return {
            'name': self.name,
-           'description' : self.description,
            'id': self.id,
-           'picture': self.picture,
-           'region': self.region,
-           'user': self.user,
-           'credit': self.credit,
+           'description': self.description,
+           'region': self.region.name,
+           'picture_url': self.picture,
        }
 
 engine = create_engine('sqlite:///instruments.db')

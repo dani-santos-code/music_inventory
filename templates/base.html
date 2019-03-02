@@ -3,7 +3,7 @@
 	<head>
 		<!-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'> -->
     <link rel="stylesheet"
-    href="/static/css/styles.css?q=1627314497"
+    href="/static/css/styles.css?q=1337237497"
     type="text/css" media="screen"
     charset="utf-8"/>
 		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
@@ -12,13 +12,28 @@
 	<body>
 		<div class="navbar">
 			<div class="logo"><img src="/static/css/logo.svg"></div>
-			<a href="/login">
-				<div class="login">Login</div>
-			</a>
+			{% if user %}
+				<a href="/logout">
+					<div class="login">Logout</div>
+				</a>
+			{% else %}
+				<a href="/login">
+					<div class="login">Login</div>
+				</a>
+		 {% endif %}
   	</div>
 		<div class="instrumentsbg">
 			<h1>Instruments Per Region</h1>
 			<a href="https://www.freepik.com/free-photos-vectors/music" target="_blank" rel="noopener noreferrer">Music vector created by freepik - www.freepik.com</a>
+		</div>
+		<div>
+		  {% with messages = get_flashed_messages() %}
+		    {% if messages %}
+		    {%for message in messages%}
+		        <div> {{ message }}!</div>
+		    {%endfor%}
+		    {% endif %}
+		  {% endwith %}
 		</div>
 		<div class="grid">
 			{% block content %}

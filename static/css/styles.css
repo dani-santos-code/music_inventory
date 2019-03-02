@@ -64,7 +64,25 @@ a:visited, a:hover, a:active, a:link {
   align-self: flex-end;
 }
 
+.cta_create {
+  box-shadow: 1px 2px 2px 3px rgba(30,186,149);
+  height: 60px;
+  border-radius: 5px;
+  background-color: rgba(30,186,149, 0.1);
+  font-weight: bold;
+}
 
+.edit_and_delete {
+  display: flex;
+  border-radius: 5px;
+  border: 1px solid #85ca85;
+  background-color: #d4e4d4;
+  justify-content: space-around;
+}
+
+.userpref a:visited, a:hover, a:active, a:link {
+  color: #076153;
+}
 
 /* ===============================
           GRID LAYOUT

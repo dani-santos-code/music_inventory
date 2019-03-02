@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="cta_create"><a href="/north_america/create">Add an Instrument to North American Instruments list!</a></div>
+
 <h1>North American Instruments</h1>
 
 {% for instrument in north_american_instruments %}
@@ -11,6 +13,12 @@
         {% if instrument.credit %}
             <span>{{instrument.credit}}</span>
         {% endif %}
-  </div>
+        {% if user %}
+        <div class="edit_and_delete">
+          <a class="userpref" href="/edit/{{instrument.id}}"><div>Edit</div></a>
+          <a class="userpref" href="/delete/{{instrument.id}}"><div>Delete</div></a>
+        </div>
+        {% endif %}
+      </div>
 {% endfor %}
 {% endblock %}

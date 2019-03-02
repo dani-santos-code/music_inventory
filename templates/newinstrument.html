@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row divider green">
+  <div class="col-md-12"></div>
+</div>
+<div class="row banner menu">
+  <div class="col-md-11 col-md-offset-1 padding-none">
+    <h1>Add New Instrument</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-1 padding-top">
+    <form action="create" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type ="text" maxlength="50" class="form-control" name="name"placeholder="Name of the instrument">
+
+        <label for="description">Description:</label>
+        <textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description of the instrument"></textarea>
+          <label for="price">Picture(URL only! with "http://"):</label>
+          <textarea class="form-control" maxlength="250" name="picture" placeholder="Paste the complete URL"></textarea>
+          <label for="name">Name:</label>
+          <input type ="text" maxlength="50" class="form-control" name="credit"placeholder="Where did you get this info?">
+        <button type="submit" class="btn btn-default" id="submit" type="submit">
+        <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
