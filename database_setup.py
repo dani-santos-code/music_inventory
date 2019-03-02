@@ -69,6 +69,7 @@ class Instrument(Base):
            'description': self.description,
            'region': self.region.name,
            'picture_url': self.picture,
+           'credit': self.credit,
        }
 
 engine = create_engine('sqlite:///instruments.db')

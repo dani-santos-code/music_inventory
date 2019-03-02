@@ -282,9 +282,9 @@ def editInstrument(instrument_id):
             if request.form['description']:
                 editedInstrument.description = request.form['description']
             if request.form['picture']:
-                editedInstrument.price = request.form['picture']
+                editedInstrument.picture = request.form['picture']
             if request.form['credit']:
-                editedInstrument.course = request.form['credit']
+                editedInstrument.credit = request.form['credit']
         session.add(editedInstrument)
         session.commit()
         flash('Instrument Successfully Edited')
