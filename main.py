@@ -158,10 +158,9 @@ def showAfricanInstruments():
     return render_template('africa.html', african_instruments=african_instruments, user=user_info)
 
 @app.route('/regions/africa/JSON')
-def asiaJSON():
+def africaJSON():
     region = session.query(Region).filter_by(name="Africa").one()
     african_instruments = session.query(Instrument).filter_by(region=region)
-    print(african_instruments)
     return jsonify(african_instruments=[i.serialize for i in african_instruments])
 
 @app.route('/main/north_america')
@@ -175,6 +174,12 @@ def showNorthAmericanInstruments():
     north_american_instruments = session.query(Instrument).filter_by(region=region)
     return render_template('north_america.html', north_american_instruments = north_american_instruments, user=user_info)
 
+@app.route('/regions/north_america/JSON')
+def northAmericaJSON():
+    region = session.query(Region).filter_by(name="North America").one()
+    north_american_instruments = session.query(Instrument).filter_by(region=region)
+    return jsonify(north_american_instruments=[i.serialize for i in north_american_instruments])
+
 @app.route('/main/south_america')
 @app.route('/south_america')
 def showSouthmericanInstruments():
@@ -185,6 +190,12 @@ def showSouthmericanInstruments():
     region = session.query(Region).filter_by(name="South America").one()
     south_american_instruments = session.query(Instrument).filter_by(region=region)
     return render_template('south_america.html', south_american_instruments=south_american_instruments, user=user_info)
+
+@app.route('/regions/south_america/JSON')
+def southAmericaJSON():
+    region = session.query(Region).filter_by(name="South America").one()
+    south_american_instruments = session.query(Instrument).filter_by(region=region)
+    return jsonify(south_american_instruments=[i.serialize for i in south_american_instruments])
 
 @app.route('/main/europe')
 @app.route('/europe/')
