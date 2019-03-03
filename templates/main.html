@@ -4,11 +4,12 @@
   <div class="grid_item">
       <a href='{{region.name.replace(" ", "_").lower()}}'>
         <div class="region">
-            <h3>{{region.name}}</h3>
+            <h3 class="region_name">{{region.name}}</h3>
             {% with formatted_name = region.name.replace(" ", "_").lower() %}
-              <img src="/static/css/{{formatted_name}}.svg"/>
+            <img class="region_img" src="/static/css/{{formatted_name}}.svg"/>
             {% endwith %}
-          </div>
+            <div class="moreinfo"><p class="moreinfo_text">See More</p></div>
+        </div>
       </a>
   </div>
 {% endfor %}
