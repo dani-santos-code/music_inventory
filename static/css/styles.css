@@ -128,11 +128,18 @@ a:visited, a:hover, a:active, a:link {
 /* ===============================
           GRID LAYOUT
    =============================== */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
 .grid {
   margin-top: 60px;
   display: grid;
-  grid-template-columns: 15% 15% 15%;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   grid-gap: 30px;
   margin-bottom: 60px;
@@ -143,7 +150,7 @@ a:visited, a:hover, a:active, a:link {
    =============================== */
 
 .grid_item {
-  margin-left: 10%;
+  /* margin-left: 10%; */
   width: 100%;
 }
 
@@ -209,15 +216,22 @@ a:visited, a:hover, a:active, a:link {
 @media (max-width: 950px) {
   .grid {
     display: grid;
-    grid-template-columns: 100%;
+    grid-template-columns: 1fr 1fr;
   }
   .region {
-    width: 262px;
+    width: 100%;
     height: 270px;
   }
 }
 
 /* Breakpoints for Small Screens */
+
+@media (max-width: 430px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 775px) {
   .logo_img {
     height: 90px;
