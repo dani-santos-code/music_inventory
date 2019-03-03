@@ -260,9 +260,18 @@ def chooseRegion():
 
 @app.route('/details/<int:instrument_id>/')
 def showInstruments(instrument_id):
+    if is_logged_in():
+        user_info = get_user_info()
+    else:
+        user_info = None
     instruments = session.query(Instrument).filter_by(id=instrument_id).all()
     print(instruments)
-    return render_template('details.html', instruments=instruments)
+    return render_template('details.html', instruments=instruments, user=user_info)
+
+@app.route('/details/<int:instrument_id>/JSON')
+def instrumentDetailsJSON(instrument_id):
+    instrument = session.query(Instrument).filter_by(id=instrument_id)
+    return jsonify(instrument=[i.serialize for i in instrument])
 
 @app.route('/edit/<int:instrument_id>', methods=['GET', 'POST'])
 def editInstrument(instrument_id):
