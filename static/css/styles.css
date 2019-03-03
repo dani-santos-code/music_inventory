@@ -39,6 +39,46 @@ a:visited, a:hover, a:active, a:link {
   color: #13ffe2;
 }
 
+.logged {
+  background-color: #1c304a;
+  display: flex;
+  height: 60px;
+  width: 300px;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #13ffe2;
+}
+
+.logout {
+  align-self: flex-end;
+  color: #13ffe2;
+  font-size: 15px;
+}
+
+.avatar {
+  background-color: #1c304a;
+  align-self: flex-start;
+  height: 60px;
+  width: 114px;
+  font-size: 15px;
+  text-transform: uppercase;
+  color: #13ffe2;
+}
+
+.avatar_img {
+  width: 40px;
+  height: 40px;
+  border: solid 1px #13ffe2;
+  border-radius: 50%;
+  margin: 10px;
+}
+
+.separator {
+  color: #ffffff;
+  align-self: flex-end;
+  margin: 0 10px 0 10px;
+}
+
 .logo {
   align-self: flex-start;
   width: 126px;
@@ -119,6 +159,12 @@ a:visited, a:hover, a:active, a:link {
   transition: all .1s linear;
   display: flex;
   flex-direction: column;
+}
+
+.flash {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
 }
 
 .region_name {

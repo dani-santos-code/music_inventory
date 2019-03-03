@@ -15,9 +15,18 @@
 		<div class="navbar">
 			<div class="logo"><img class="logo_img" src="/static/css/logo.svg"></div>
 			{% if user %}
-				<a href="/logout">
-					<div class="login">Logout</div>
-				</a>
+			<div class="logged">
+				<div><img class="avatar_img" src='{{user.picture}}'/></div>
+				{% if user.name|length > 10 %}
+					<div class="avatar">{{user.name[:9]}}</div>
+				{% else %}
+					<div class="avatar">{{user.name}}</div>
+				{% endif %}
+				<div class="separator">|</diV>
+					<a href="/logout">
+							<div class="logout">Logout</div>
+					</a>
+			</div>
 			{% else %}
 				<a href="/login">
 					<div class="login">Login</div>
@@ -32,7 +41,7 @@
 		  {% with messages = get_flashed_messages() %}
 		    {% if messages %}
 		    {%for message in messages%}
-		        <div> {{ message }}!</div>
+		        <div class="flash"> {{ message }}!</div>
 		    {%endfor%}
 		    {% endif %}
 		  {% endwith %}

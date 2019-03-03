@@ -51,7 +51,7 @@ def no_cache(view):
 @app.route('/login')
 @no_cache
 def showLogin():
-    oauth_session = OAuth2Session(CCLIENT_ID, CLIENT_SECRET, scope=AUTHORIZATION_SCOPE, redirect_uri=AUTH_REDIRECT_URI)
+    oauth_session = OAuth2Session(CLIENT_ID, CLIENT_SECRET, scope=AUTHORIZATION_SCOPE, redirect_uri=AUTH_REDIRECT_URI)
     uri, state = oauth_session.create_authorization_url(AUTHORIZATION_URL)
     state = "".join(random.choice
                     (string.ascii_uppercase + string.digits)
