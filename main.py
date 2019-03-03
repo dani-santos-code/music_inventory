@@ -28,14 +28,13 @@ session = scoped_session(DBSession)
 # OAuth Credentials
 ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
 AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent'
-
 AUTHORIZATION_SCOPE ='openid email profile'
-
 AUTH_REDIRECT_URI = 'http://localhost:5000/gCallback'
 BASE_URI = 'http://localhost:5000'
 CLIENT_ID = '359568122134-niii8bh1f3l32b466s6qna4867lbq45p.apps.googleusercontent.com'
 CLIENT_SECRET = 'T1iIGSdpiw9Tj-gPCnKQdyNy'
 
+# Session credentials
 AUTH_TOKEN_KEY = 'auth_token'
 USER_INFO_KEY = 'user_info'
 
@@ -47,26 +46,19 @@ def no_cache(view):
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '-1'
         return response
-
     return functools.update_wrapper(no_cache_impl, view)
 
 @app.route('/login')
 @no_cache
 def showLogin():
-    oauth_session = OAuth2Session(CLIENT_ID, CLIENT_SECRET, scope=AUTHORIZATION_SCOPE, redirect_uri=AUTH_REDIRECT_URI)
+    oauth_session = OAuth2Session(CCLIENT_ID, CLIENT_SECRET, scope=AUTHORIZATION_SCOPE, redirect_uri=AUTH_REDIRECT_URI)
     uri, state = oauth_session.create_authorization_url(AUTHORIZATION_URL)
-    # login_session[AUTH_STATE_KEY] = state
     state = "".join(random.choice
                     (string.ascii_uppercase + string.digits)
                     for x in range(32))
     login_session['state'] = state
     login_session.permanent = True
     return redirect(uri, code=302)
-    # state = "".join(random.choice
-    #                 (string.ascii_uppercase + string.digits)
-    #                 for x in range(32))
-    # login_session['state'] = state
-    # return "The current session state is {}".format(login_session['state'])
 
 @app.route('/logout')
 @no_cache
