@@ -136,12 +136,16 @@ a:visited, a:hover, a:active, a:link {
     width: 105px;
   }
   .instrumentsbg {
-    font-size: 15px;
+    font-size: 13px;
     height: 81px;
   }
 
   .instrumentsbg a {
     font-size: 5px;
+  }
+
+  .grid_item {
+    margin-left: 0;
   }
 
   .navbar {
@@ -152,9 +156,5 @@ a:visited, a:hover, a:active, a:link {
 
   .login {
     height: 60px;
-  }
-
-  h1 {
-    margin-top: 0.5em;
   }
 }
