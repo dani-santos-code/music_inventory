@@ -24,6 +24,7 @@ https://docs.sqlalchemy.org/en/latest
 /orm/contextual.html"""
 
 session = scoped_session(DBSession)
+
 # OAuth Credentials
 ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
 AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent'
@@ -36,7 +37,6 @@ CLIENT_ID = '359568122134-niii8bh1f3l32b466s6qna4867lbq45p.apps.googleuserconten
 CLIENT_SECRET = 'T1iIGSdpiw9Tj-gPCnKQdyNy'
 
 AUTH_TOKEN_KEY = 'auth_token'
-AUTH_STATE_KEY = 'auth_state'
 USER_INFO_KEY = 'user_info'
 
 def no_cache(view):
@@ -55,7 +55,11 @@ def no_cache(view):
 def showLogin():
     oauth_session = OAuth2Session(CLIENT_ID, CLIENT_SECRET, scope=AUTHORIZATION_SCOPE, redirect_uri=AUTH_REDIRECT_URI)
     uri, state = oauth_session.create_authorization_url(AUTHORIZATION_URL)
-    login_session[AUTH_STATE_KEY] = state
+    # login_session[AUTH_STATE_KEY] = state
+    state = "".join(random.choice
+                    (string.ascii_uppercase + string.digits)
+                    for x in range(32))
+    login_session['state'] = state
     login_session.permanent = True
     return redirect(uri, code=302)
     # state = "".join(random.choice
@@ -67,8 +71,11 @@ def showLogin():
 @app.route('/logout')
 @no_cache
 def logout():
+    state = "".join(random.choice
+                    (string.ascii_uppercase + string.digits)
+                    for x in range(32))
     login_session.pop(AUTH_TOKEN_KEY, None)
-    login_session.pop(AUTH_STATE_KEY, None)
+    login_session.pop(state, None)
     login_session.pop(USER_INFO_KEY, None)
 
     return redirect(BASE_URI, code=302)
