@@ -1,26 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Instruments added by <strong>{{user.name}}</strong></h1>
-
-<div class="cta_create"><a href="/choose">Add an Instrument!</a></div>
-
+<!-- <div class="cta_create"><a href="/choose">Add an Instrument!</a></div> -->
 {% if instruments %}
-  {% for instrument in instruments %}
-  <div class="instrumentcard">
-    <h2>{{instrument.name}}</h2>
-      <p>{{instrument.description}}</p>
-      <img src='{{instrument.picture}}' height=60 width=60/>
-      {% if instrument.credit %}
-          <span>{{instrument.credit}}</span>
-      {% endif %}
-      {% if user %}
-      <div class="edit_and_delete">
-        <a class="userpref" href="/edit/{{instrument.id}}"><div>Edit</div></a>
-        <a class="userpref" href="/delete/{{instrument.id}}"><div>Delete</div></a>
-      </div>
-      {% endif %}
+<div class="table">
+  <div class="table_title">
+    <p>Instrument</p>
+    <p>Title</p>
   </div>
+  {% for instrument in instruments %}
+  <div class="instrument">
+      <div class="instrument_info">
+        <img class="table_img" src='{{instrument.picture}}'/>
+        <p class="instrument_name">{{instrument.name}}</p>
+      </div
+      <div class="edit_and_delete">
+        <a class="userpref" href="/edit/{{instrument.id}}"><div class="edit">Edit</div></a>
+        <a class="userpref" href="/delete/{{instrument.id}}"><div class="delete">Delete</div></a>
+      </div>
   {% endfor %}
+  </div>  
 {% endif %}
+</div>
+
 {% endblock %}

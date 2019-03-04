@@ -58,7 +58,7 @@ def showLogin():
                     for x in range(32))
     login_session['state'] = state
     login_session.permanent = True
-    flash('You have successfully logged in')
+    # flash('You have successfully logged in')
     return redirect(uri, code=302)
 
 @app.route('/logout')

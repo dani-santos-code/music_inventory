@@ -105,6 +105,50 @@ a:visited, a:hover, a:active, a:link {
   align-self: flex-end;
 }
 
+.table {
+  width: 70%;
+  margin: 60px auto;
+  border-radius: 5px;
+  box-shadow: 0 7px 13px -6px rgba(36, 98, 142, 0.23);
+  background-color: #ffffff;
+}
+.table_title {
+  display: flex;
+  margin: 10px;
+  justify-content: space-between;
+  height: 24px;
+  border: solid 1px #e9edf5;
+  background-color: #fafafc;
+}
+
+.table_img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: solid 2px #85f5ee;
+}
+
+.edit {
+  width: 63px;
+  height: 19px;
+  border-radius: 3px;
+  border: solid 1px #24628e;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 16px;
+}
+
+.delete {
+  width: 76px;
+  height: 19px;
+  border-radius: 3px;
+  border: solid 1px #d0021b;
+  text-align: center;
+  text-transform: uppercase;
+  color: #d0021b;
+  line-height: 16px;
+}
+
 .cta_create {
   box-shadow: 1px 2px 2px 3px rgba(30,186,149);
   height: 60px;
@@ -113,12 +157,25 @@ a:visited, a:hover, a:active, a:link {
   font-weight: bold;
 }
 
-.edit_and_delete {
+.instrument {
+  margin: 10px;
   display: flex;
-  border-radius: 5px;
-  border: 1px solid #85ca85;
-  background-color: #d4e4d4;
-  justify-content: space-around;
+  justify-content: space-between;
+  border-bottom: solid 1px #f1f1f3;
+}
+
+.instrument_info {
+  display: flex;
+  padding-bottom: 7px;
+}
+
+.instrument_name {
+  padding: 10px;
+}
+
+.edit_and_delete {
+  display: inline-block;
+  background-color: blue;
 }
 
 .userpref a:visited, a:hover, a:active, a:link {
