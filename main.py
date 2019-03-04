@@ -91,7 +91,8 @@ def showDashboard():
         # print(type(user_info))
         # print(user_info["id"])
         flash('You have successfully logged in')
-        return render_template('dashboard.html', user=user_info)
+        instruments = session.query(Instrument).filter_by(user_id=user_info["id"])
+        return render_template('dashboard.html', user=user_info, instruments=instruments)
     if not is_logged_in():
         return redirect(url_for('showRegions'), code=302)
 

@@ -5,4 +5,24 @@
 
 <div class="cta_create"><a href="/choose">Add an Instrument!</a></div>
 
+<div>Instruments Added by you, <strong>{{user.name}}<strong></div>
+
+{% if instruments %}
+  {% for instrument in instruments %}
+  <div class="instrumentcard">
+    <h2>{{instrument.name}}</h2>
+      <p>{{instrument.description}}</p>
+      <img src='{{instrument.picture}}' height=60 width=60/>
+      {% if instrument.credit %}
+          <span>{{instrument.credit}}</span>
+      {% endif %}
+      {% if user %}
+      <div class="edit_and_delete">
+        <a class="userpref" href="/edit/{{instrument.id}}"><div>Edit</div></a>
+        <a class="userpref" href="/delete/{{instrument.id}}"><div>Delete</div></a>
+      </div>
+      {% endif %}
+  </div>
+  {% endfor %}
+{% endif %}
 {% endblock %}

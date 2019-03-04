@@ -13,10 +13,10 @@
 	</head>
 	<body>
 		<div class="navbar">
-			<div class="logo"><img class="logo_img" src="/static/css/logo.svg"></div>
+			<a href="/"><div class="logo"><img class="logo_img" src="/static/css/logo.svg"></div></a>
 			{% if user %}
 			<div class="logged">
-				<div><img class="avatar_img" src='{{user.picture}}'/></div>
+				<a href="/dashboard"><div><img class="avatar_img" src='{{user.picture}}'/></div></a>
 				{% if user.name|length > 10 %}
 					<div class="avatar">{{user.name[:9]}}</div>
 				{% else %}
