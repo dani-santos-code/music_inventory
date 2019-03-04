@@ -151,10 +151,13 @@ a:visited, a:hover, a:active, a:link {
 
 .cta_create {
   box-shadow: 1px 2px 2px 3px rgba(30,186,149);
-  height: 60px;
   border-radius: 5px;
   background-color: rgba(30,186,149, 0.1);
   font-weight: bold;
+  margin: 40px auto;
+  width: 150px;
+  height: 45px;
+  text-align: center;
 }
 
 .instrument {
@@ -171,11 +174,6 @@ a:visited, a:hover, a:active, a:link {
 
 .instrument_name {
   padding: 10px;
-}
-
-.edit_and_delete {
-  display: inline-block;
-  background-color: blue;
 }
 
 .userpref a:visited, a:hover, a:active, a:link {
