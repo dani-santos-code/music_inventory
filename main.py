@@ -88,11 +88,13 @@ def is_logged_in():
 def showDashboard():
     if is_logged_in():
         user_info = get_user_info()
+        page_url = request.url.encode("utf-8")
+        dashboard = page_url.replace("/", "")
         # print(type(user_info))
         # print(user_info["id"])
         flash('You have successfully logged in')
         instruments = session.query(Instrument).filter_by(user_id=user_info["id"])
-        return render_template('dashboard.html', user=user_info, instruments=instruments)
+        return render_template('dashboard.html', user=user_info, instruments=instruments, dashboard=dashboard)
     if not is_logged_in():
         return redirect(url_for('showRegions'), code=302)
 

@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Instruments added by You</h1>
+<h1>Instruments added by <strong>{{user.name}}<strong></h1>
 
 <div class="cta_create"><a href="/choose">Add an Instrument!</a></div>
-
-<div>Instruments Added by you, <strong>{{user.name}}<strong></div>
 
 {% if instruments %}
   {% for instrument in instruments %}
