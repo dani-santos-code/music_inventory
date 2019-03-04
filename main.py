@@ -58,6 +58,7 @@ def showLogin():
                     for x in range(32))
     login_session['state'] = state
     login_session.permanent = True
+    flash('You have successfully logged in')
     return redirect(uri, code=302)
 
 @app.route('/logout')
@@ -92,7 +93,6 @@ def showDashboard():
         dashboard = page_url.replace("/", "")
         # print(type(user_info))
         # print(user_info["id"])
-        flash('You have successfully logged in')
         instruments = session.query(Instrument).filter_by(user_id=user_info["id"])
         return render_template('dashboard.html', user=user_info, instruments=instruments, dashboard=dashboard)
     if not is_logged_in():
@@ -248,7 +248,7 @@ def newInstrument(region_name):
                            'picture'], region=region, credit=request.form['credit'])
         session.add(newInstrument)
         session.commit()
-        flash('New Instrument {} Item Successfully Created'.format(newInstrument.name))
+        flash('New Instrument {} Successfully Created'.format(newInstrument.name))
         return redirect(url_for('showRegions'))
     else:
         return render_template('newinstrument.html')
@@ -302,7 +302,8 @@ def editInstrument(instrument_id):
         return redirect(url_for('showInstruments', instrument_id=editedInstrument.id))
     else:
         return render_template('editinstrument.html', instrument_id=editedInstrument.id, instrument=editedInstrument)
-# Delete a menu item
+
+# Delete an instrument
 @app.route('/delete/<int:instrument_id>', methods=['GET', 'POST'])
 def deleteInstrument(instrument_id):
     if not is_logged_in():
