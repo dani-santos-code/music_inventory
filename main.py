@@ -250,6 +250,8 @@ def oceaniaJSON():
 def newInstrument(region_name):
     if not is_logged_in():
         return redirect('/login')
+    else:
+        user = get_user_info()
     if "_" in region_name:
         region_name = region_name.replace("_", " ")
     region = session.query(Region).filter_by(name=region_name.title()).one()
@@ -263,7 +265,7 @@ def newInstrument(region_name):
         flash('New Instrument {} Successfully Created'.format(newInstrument.name))
         return redirect(url_for('showRegions'))
     else:
-        return render_template('newinstrument.html')
+        return render_template('newinstrument.html', user=user)
 
 @app.route('/choose/', methods=['GET', 'POST'])
 def chooseRegion():
@@ -292,11 +294,9 @@ def instrumentDetailsJSON(instrument_id):
 def editInstrument(instrument_id):
     if not is_logged_in():
         return redirect('/login')
+    else:
+        user = get_user_info()
     editedInstrument = session.query(Instrument).filter_by(id=instrument_id).one()
-    # print(editedInstrument.name)
-    # if request.method == 'POST':
-    user_info = get_user_info()
-    user_id = user_info["id"]
     if request.method == 'POST':
         if request.form['name']:
             editedInstrument.name = request.form['name']
@@ -313,13 +313,15 @@ def editInstrument(instrument_id):
         flash('Instrument Successfully Edited')
         return redirect(url_for('showInstruments', instrument_id=editedInstrument.id))
     else:
-        return render_template('editinstrument.html', instrument_id=editedInstrument.id, instrument=editedInstrument)
+        return render_template('editinstrument.html', instrument_id=editedInstrument.id, instrument=editedInstrument, user=user)
 
 # Delete an instrument
 @app.route('/delete/<int:instrument_id>', methods=['GET', 'POST'])
 def deleteInstrument(instrument_id):
     if not is_logged_in():
         return redirect('/login')
+    else:
+        user = get_user_info()
     instrumentToDelete = session.query(Instrument).filter_by(id=instrument_id).one()
     if request.method == 'POST':
         session.delete(instrumentToDelete)
@@ -327,7 +329,7 @@ def deleteInstrument(instrument_id):
         flash('Instrument Successfully Deleted')
         return redirect(url_for('showRegions'))
     else:
-        return render_template('deleteinstrument.html', instrumentToDelete=instrumentToDelete)
+        return render_template('deleteinstrument.html', instrumentToDelete=instrumentToDelete, user=user)
 
 
 if __name__ == '__main__':
