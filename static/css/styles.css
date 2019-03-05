@@ -160,6 +160,17 @@ a:visited, a:hover, a:active, a:link {
   text-align: center;
 }
 
+.cta_create_region {
+  box-shadow: 1px 2px 2px 3px rgba(30,186,149);
+  border-radius: 5px;
+  background-color: rgba(30,186,149, 0.1);
+  font-weight: bold;
+  margin: 40px auto;
+  width: 250px;
+  height: 45px;
+  text-align: center;
+}
+
 .instrument {
   margin: 10px;
   display: flex;
@@ -234,6 +245,21 @@ a:visited, a:hover, a:active, a:link {
   align-self: center;
 }
 
+.region_choice {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.region_form {
+  width: 200px;
+  margin: 25px auto;
+}
+
+.region_choice__title {
+  text-align: center;
+}
+
 .region_img {
   order: 2;
   align-self: center;
@@ -300,6 +326,19 @@ a:visited, a:hover, a:active, a:link {
 
   .instrumentsbg a {
     font-size: 5px;
+  }
+
+  .instruments_region {
+    margin-top: 30px;
+  }
+
+  .instruments_header {
+    display: flex;
+  }
+
+  .instrumentcard {
+    width: 600px;
+    margin: 0 auto;
   }
 
   .grid_item {
