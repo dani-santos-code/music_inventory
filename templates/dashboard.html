@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if instruments == true %}
+{% if instruments %}
   <div class="cta_create"><a href="/choose">Add an Instrument!</a></div>
   <div class="table">
+    {% for instrument in instruments %}
     <div class="table_title">
       <p>Instrument</p>
       <p>Title</p>
     </div>
-    {% for instrument in instruments %}
     <div class="instrument">
         <div class="instrument_info">
           <img class="table_img" src='{{instrument.picture}}'/>
           <p class="instrument_name">{{instrument.name}}</p>
-        </div
+        </div>
         <div class="edit_and_delete" style="display:flex;">
           <a class="userpref" href="/edit/{{instrument.id}}"><div class="edit">Edit</div></a>
           <a class="userpref" href="/delete/{{instrument.id}}"><div class="delete">Delete</div></a>
         </div>
+      </div>
     {% endfor %}
-    </div>
   </div>
 {% else %}
   <div class="cta_create"><a href="/choose">Add an Instrument!</a></div>
