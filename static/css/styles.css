@@ -227,7 +227,10 @@ a:visited, a:hover, a:active, a:link {
 
 .instruments_region {
   margin-top: 30px;
+  width: 433px;
+  text-align: right;
 }
+
 
 .instruments_header {
   display: flex;
