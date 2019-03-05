@@ -149,6 +149,10 @@ a:visited, a:hover, a:active, a:link {
   line-height: 16px;
 }
 
+.edit_and_delete {
+  display: flex;
+}
+
 .cta_create {
   box-shadow: 1px 2px 2px 3px rgba(30,186,149);
   border-radius: 5px;
@@ -218,6 +222,19 @@ a:visited, a:hover, a:active, a:link {
 .grid_item {
   /* margin-left: 10%; */
   width: 100%;
+}
+
+.instruments_region {
+  margin-top: 30px;
+}
+
+.instruments_header {
+  display: flex;
+}
+
+.instrumentcard {
+  width: 600px;
+  margin: 0 auto;
 }
 
 .region {
@@ -326,19 +343,6 @@ a:visited, a:hover, a:active, a:link {
 
   .instrumentsbg a {
     font-size: 5px;
-  }
-
-  .instruments_region {
-    margin-top: 30px;
-  }
-
-  .instruments_header {
-    display: flex;
-  }
-
-  .instrumentcard {
-    width: 600px;
-    margin: 0 auto;
   }
 
   .grid_item {

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, make_response, redirect, jsonify, url_for, flash, session as login_session
 import functools
-import os
 import random, string
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker, scoped_session
@@ -109,8 +108,7 @@ def showDashboard():
         instruments = session.query(Instrument).filter_by(user_id=user_info["id"])
         return render_template('dashboard.html', user=user_info, instruments=instruments, dashboard=dashboard)
     if not is_logged_in():
-        instruments = None
-        return redirect(url_for('showRegions'), code=302, instruments=instruments)
+        return redirect(url_for('showRegions'), code=302)
 
 def build_credentials():
     if not is_logged_in():
