@@ -199,6 +199,9 @@ a:visited, a:hover, a:active, a:link {
   border-radius: 50%;
   z-index: 1;
   margin-bottom: -21px;
+  border: solid 5px #85f5ee;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
 
 .instrument_wrapper {
@@ -206,6 +209,7 @@ a:visited, a:hover, a:active, a:link {
   margin: 0 auto;
   display: flex;
   justify-content: center;
+  background-color: #ffffff;
 }
 
 .instrument_descrip {

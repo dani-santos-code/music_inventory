@@ -1,24 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
-
-<div class="cta_create"><a href="/north_america/create">Add an Instrument to North American Instruments list!</a></div>
-
-<h1>North American Instruments</h1>
-
-{% for instrument in north_american_instruments %}
-    <div class="instrumentcard">
-      <h2>{{instrument.name}}</h2>
-        <p>{{instrument.description}}</p>
-        <img src='{{instrument.picture}}' height=60 width=60/>
-        {% if instrument.credit %}
-            <span>{{instrument.credit}}</span>
-        {% endif %}
-        {% if user %}
-        <div class="edit_and_delete">
-          <a class="userpref" href="/edit/{{instrument.id}}"><div>Edit</div></a>
-          <a class="userpref" href="/delete/{{instrument.id}}"><div>Delete</div></a>
-        </div>
-        {% endif %}
+<div>
+  <div class="instruments_header ">
+    <div class="cta_create_region"><a href="/africa/create">Add an Instrument to N. America</a></div>
+  </div>
+<div class="grid_instruments">
+  {% for instrument in north_american_instruments %}
+      <div class="grid_item">
+          <a href='/details/{{instrument.id}}'>
+            <div class="instrument_wrapper">
+              <img class="instrument_img" src="{{instrument.picture}}"/>
+            </div>
+            <div class="region">
+                <h3 class="region_name">{{instrument.name}}</h3>
+                <p class="instrument_descrip">{{instrument.description[:40]}}...</p>
+                <div class="moreinfo"><p class="moreinfo_text">See More</p></div>
+            </div>
+          </a>
       </div>
-{% endfor %}
+  {% endfor %}
+</div>
 {% endblock %}
