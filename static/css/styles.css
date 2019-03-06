@@ -156,6 +156,7 @@ input, textarea, select{
   text-transform: uppercase;
   color: #d0021b;
   line-height: 16px;
+  cursor: pointer;
 }
 
 .edit_and_delete {
