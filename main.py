@@ -102,11 +102,9 @@ def showDashboard():
     if is_logged_in():
         user_info = get_user_info()
         page_url = request.url.encode("utf-8")
-        dashboard = page_url.replace("/", "")
-        # print(type(user_info))
-        # print(user_info["id"])
+        title = "My Instruments"
         instruments = session.query(Instrument).filter_by(user_id=user_info["id"])
-        return render_template('dashboard.html', user=user_info, instruments=instruments, dashboard=dashboard)
+        return render_template('dashboard.html', user=user_info, instruments=instruments, title=title)
     if not is_logged_in():
         return redirect(url_for('showRegions'), code=302)
 
@@ -134,25 +132,25 @@ def regionsJSON():
     return jsonify(regions=[r.serialize for r in regions])
 
 @app.route('/')
-@app.route('/main/')
 def showRegions():
     regions = session.query(Region).all()
+    title = "Instruments Per Region"
     if is_logged_in():
         user_info = get_user_info()
-        return render_template('main.html', regions=regions, user=user_info)
+        return render_template('main.html', regions=regions, user=user_info, title=title)
     else:
-        return render_template('main.html', regions=regions)
+        return render_template('main.html', regions=regions, title=title)
 
-@app.route('/main/asia')
 @app.route('/asia/')
 def showAsianInstruments():
     if is_logged_in():
         user_info = get_user_info()
     else:
         user_info = None
+    title = "Asian Instruments"
     region = session.query(Region).filter_by(name="Asia").one()
     asian_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('asia.html', asian_instruments=asian_instruments, user=user_info)
+    return render_template('asia.html', asian_instruments=asian_instruments, user=user_info, title=title)
 
 @app.route('/regions/asia/JSON')
 def asiaJSON():
@@ -160,16 +158,16 @@ def asiaJSON():
     asian_instruments = session.query(Instrument).filter_by(region=region)
     return jsonify(asian_instruments=[i.serialize for i in asian_instruments])
 
-@app.route('/main/africa')
 @app.route('/africa/')
 def showAfricanInstruments():
     if is_logged_in():
         user_info = get_user_info()
     else:
         user_info = None
+    title = "African Instruments"
     region = session.query(Region).filter_by(name="Africa").one()
     african_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('africa.html', african_instruments=african_instruments, user=user_info)
+    return render_template('africa.html', african_instruments=african_instruments, user=user_info, title=title)
 
 @app.route('/regions/africa/JSON')
 def africaJSON():
@@ -177,16 +175,16 @@ def africaJSON():
     african_instruments = session.query(Instrument).filter_by(region=region)
     return jsonify(african_instruments=[i.serialize for i in african_instruments])
 
-@app.route('/main/north_america')
 @app.route('/north_america/')
 def showNorthAmericanInstruments():
     if is_logged_in():
         user_info = get_user_info()
     else:
         user_info = None
+    title = "North American Instruments"
     region = session.query(Region).filter_by(name="North America").one()
     north_american_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('north_america.html', north_american_instruments = north_american_instruments, user=user_info)
+    return render_template('north_america.html', north_american_instruments = north_american_instruments, user=user_info, title=title)
 
 @app.route('/regions/north_america/JSON')
 def northAmericaJSON():
@@ -194,16 +192,16 @@ def northAmericaJSON():
     north_american_instruments = session.query(Instrument).filter_by(region=region)
     return jsonify(north_american_instruments=[i.serialize for i in north_american_instruments])
 
-@app.route('/main/south_america')
 @app.route('/south_america')
 def showSouthmericanInstruments():
     if is_logged_in():
         user_info = get_user_info()
     else:
         user_info = None
+    title = "South American Instruments"
     region = session.query(Region).filter_by(name="South America").one()
     south_american_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('south_america.html', south_american_instruments=south_american_instruments, user=user_info)
+    return render_template('south_america.html', south_american_instruments=south_american_instruments, user=user_info, title=title)
 
 @app.route('/regions/south_america/JSON')
 def southAmericaJSON():
@@ -211,16 +209,16 @@ def southAmericaJSON():
     south_american_instruments = session.query(Instrument).filter_by(region=region)
     return jsonify(south_american_instruments=[i.serialize for i in south_american_instruments])
 
-@app.route('/main/europe')
 @app.route('/europe/')
 def showEuropeanInstruments():
     if is_logged_in():
         user_info = get_user_info()
     else:
         user_info = None
+    title = "European Instruments"
     region = session.query(Region).filter_by(name="Europe").one()
     european_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('europe.html', european_instruments=european_instruments, user=user_info)
+    return render_template('europe.html', european_instruments=european_instruments, user=user_info, title=title)
 
 @app.route('/regions/europe/JSON')
 def europeJSON():
@@ -228,16 +226,16 @@ def europeJSON():
     european_instruments = session.query(Instrument).filter_by(region=region)
     return jsonify(european_instruments=[i.serialize for i in european_instruments])
 
-@app.route('/main/oceania/')
 @app.route('/oceania/')
 def showOceaniaInstruments():
     if is_logged_in():
         user_info = get_user_info()
     else:
         user_info = None
+    title = "Oceania's Instruments"
     region = session.query(Region).filter_by(name="Oceania").one()
     oceania_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('oceania.html', oceania_instruments=oceania_instruments, user=user_info)
+    return render_template('oceania.html', oceania_instruments=oceania_instruments, user=user_info, title=title)
 
 @app.route('/regions/oceania/JSON')
 def oceaniaJSON():
@@ -294,8 +292,6 @@ def instrumentDetailsJSON(instrument_id):
 def editInstrument(instrument_id):
     if not is_logged_in():
         return redirect('/login')
-    else:
-        user = get_user_info()
     editedInstrument = session.query(Instrument).filter_by(id=instrument_id).one()
     if request.method == 'POST':
         if request.form['name']:
@@ -313,6 +309,7 @@ def editInstrument(instrument_id):
         flash('Instrument Successfully Edited')
         return redirect(url_for('showInstruments', instrument_id=editedInstrument.id))
     else:
+        user = get_user_info()
         return render_template('editinstrument.html', instrument_id=editedInstrument.id, instrument=editedInstrument, user=user)
 
 # Delete an instrument

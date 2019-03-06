@@ -33,17 +33,10 @@
 				</a>
 		 {% endif %}
   	</div>
-		{% if dashboard %}
 		<div class="instrumentsbg">
-			<h1>My Instruments</h1>
+			<h1>{{title}}</h1>
 			<a href="https://www.freepik.com/free-photos-vectors/music" target="_blank" rel="noopener noreferrer">Music vector created by freepik - www.freepik.com</a>
 		</div>
-		{% else %}
-		<div class="instrumentsbg">
-			<h1>Instruments Per Region</h1>
-			<a href="https://www.freepik.com/free-photos-vectors/music" target="_blank" rel="noopener noreferrer">Music vector created by freepik - www.freepik.com</a>
-		</div>
-		{%endif%}
 		  {% with messages = get_flashed_messages() %}
 				<div>
 		    {% if messages %}

@@ -2,24 +2,22 @@
 {% block content %}
 <div>
   <div class="instruments_header ">
-    <h2 class="instruments_region">African Instruments</h2>
     <div class="cta_create_region"><a href="/africa/create">Add an Instrument to Africa</a></div>
   </div>
-{% for instrument in african_instruments %}
-  <div class="instrumentcard">
-    <h2>{{instrument.name}}</h2>
-      <p>{{instrument.description}}</p>
-      <img src='{{instrument.picture}}' height=60 width=60/>
-      {% if instrument.credit %}
-          <span>{{instrument.credit}}</span>
-      {% endif %}
-      {% if user %}
-      <div class="edit_and_delete">
-        <a class="userpref" href="/edit/{{instrument.id}}"><div>Edit</div></a>
-        <a class="userpref" href="/delete/{{instrument.id}}"><div>Delete</div></a>
+<div class="grid">
+  {% for instrument in african_instruments %}
+      <div class="grid_item">
+          <a href='/details/{{instrument.id}}'>
+            <div class="instrument_wrapper">
+              <img class="instrument_img" src="{{instrument.picture}}"/>
+            </div>
+            <div class="region">
+                <h3 class="region_name">{{instrument.name}}</h3>
+                <p class="instrument_descrip">{{instrument.description[:40]}}...</p>
+                <div class="moreinfo"><p class="moreinfo_text">See More</p></div>
+            </div>
+          </a>
       </div>
-      {% endif %}
-    </div>
-</div>
-{% endfor %}
+  {% endfor %}
+  </div>
 {% endblock %}

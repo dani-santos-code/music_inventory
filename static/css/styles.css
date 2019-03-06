@@ -152,6 +152,7 @@ a:visited, a:hover, a:active, a:link {
 
 .edit_and_delete {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .cta_create {
@@ -190,6 +191,26 @@ a:visited, a:hover, a:active, a:link {
 
 .instrument_name {
   padding: 10px;
+}
+
+.instrument_img {
+  width: 91px;
+  height: 91px;
+  border-radius: 50%;
+  z-index: 1;
+  margin-bottom: -21px;
+}
+
+.instrument_wrapper {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.instrument_descrip {
+  line-height: 20px;
+  margin-top: 60px;
 }
 
 .userpref a:visited, a:hover, a:active, a:link {
