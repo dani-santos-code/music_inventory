@@ -305,7 +305,7 @@ def editInstrument(instrument_id):
         return redirect(url_for('showInstruments', instrument_id=editedInstrument.id))
     else:
         user = get_user_info()
-        return render_template('editinstrument.html', instrument_id=editedInstrument.id, instrument=editedInstrument, user=user)
+        return render_template('editinstrument.html', instrument_id=editedInstrument.id, instrument=editedInstrument, user=user, title="Edit Instrument")
 
 # Delete an instrument
 @app.route('/delete/<int:instrument_id>', methods=['GET', 'POST'])
