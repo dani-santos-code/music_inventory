@@ -29,6 +29,11 @@ a:visited, a:hover, a:active, a:link {
   justify-content: space-between;
 }
 
+.noinstruments {
+  width: 99px;
+  height: 90px;
+}
+
 .login {
   background-color: #1c304a;
   align-self: flex-end;

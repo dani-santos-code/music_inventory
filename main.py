@@ -148,6 +148,7 @@ def showAsianInstruments():
         user_info = None
     title = "Asian Instruments"
     region = session.query(Region).filter_by(name="Asia").one()
+    print(region)
     asian_instruments = session.query(Instrument).filter_by(region=region)
     return render_template('asia.html', asian_instruments=asian_instruments, user=user_info, title=title)
 
@@ -243,34 +244,24 @@ def oceaniaJSON():
     return jsonify(oceania_instruments=[i.serialize for i in oceania_instruments])
 
 # Create a new instrument per region
-@app.route('/<region_name>/create', methods=['GET', 'POST'])
-def newInstrument(region_name):
+@app.route('/create', methods=['GET', 'POST'])
+def newInstrument():
     if not is_logged_in():
         return redirect('/login')
     else:
         user = get_user_info()
-    if "_" in region_name:
-        region_name = region_name.replace("_", " ")
-    region = session.query(Region).filter_by(name=region_name.title()).one()
     if request.method == 'POST':
         user_info = get_user_info()
         user_id = user_info["id"]
+        region = session.query(Region).filter_by(name=request.form['region']).one()
         newInstrument = Instrument(user_id=user_id, name=request.form['name'], description=request.form['description'], picture=request.form[
                            'picture'], region=region, credit=request.form['credit'])
         session.add(newInstrument)
         session.commit()
-        flash('New Instrument {} Successfully Created'.format(newInstrument.name))
+        flash('New Instrument {} Successfully Added to {}'.format(newInstrument.name, region.name))
         return redirect(url_for('showRegions'))
     else:
-        return render_template('newinstrument.html', user=user)
-
-@app.route('/choose/', methods=['GET', 'POST'])
-def chooseRegion():
-    if request.method == 'POST':
-        region_name = request.form['region'].lower()
-        return redirect(url_for('newInstrument', region_name=region_name))
-    else:
-        return render_template('chooseregion.html')
+        return render_template('newinstrument.html', user=user, title="Add New Instrument")
 
 @app.route('/details/<int:instrument_id>/')
 def showInstruments(instrument_id):
@@ -300,7 +291,7 @@ def editInstrument(instrument_id):
         if request.form['name']:
             editedInstrument.name = request.form['name']
         if request.form['region']:
-            editedInstrument.region.name = request.form['region']
+            editedInstrument.region = session.query(Region).filter_by(name=request.form['region']).one()
         if request.form['description']:
             editedInstrument.description = request.form['description']
         if request.form['picture']:

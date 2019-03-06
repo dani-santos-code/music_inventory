@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if instruments %}
-  <div class="cta_create"><a href="/choose">Add an Instrument!</a></div>
+  <div class="cta_create"><a href="/create">Add an Instrument!</a></div>
   <div class="table">
     {% for instrument in instruments %}
     <div class="table_title">
@@ -22,6 +22,6 @@
     {% endfor %}
   </div>
 {% else %}
-  <div class="cta_create"><a href="/choose">Add an Instrument!</a></div>
+
 {% endif %}
 {% endblock %}
