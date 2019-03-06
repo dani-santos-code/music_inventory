@@ -318,7 +318,7 @@ def deleteInstrument(instrument_id):
         session.delete(instrumentToDelete)
         session.commit()
         flash('Instrument Successfully Deleted')
-        return redirect(url_for('showRegions'))
+        return redirect(url_for('showDashboard'))
     else:
         return render_template('deleteinstrument.html', instrumentToDelete=instrumentToDelete, user=user)
 
