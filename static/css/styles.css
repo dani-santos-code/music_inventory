@@ -349,8 +349,10 @@ a:visited, a:hover, a:active, a:link {
 
 /* Breakpoints for Medium Screens */
 @media (max-width: 950px) {
-  .grid {
-    display: grid;
+  .grid_region {
+    grid-template-columns: 1fr 1fr;
+  }
+  .grid_instruments {
     grid-template-columns: 1fr 1fr;
   }
   .region {
@@ -362,7 +364,10 @@ a:visited, a:hover, a:active, a:link {
 /* Breakpoints for Small Screens */
 
 @media (max-width: 430px) {
-  .grid {
+  .grid_region {
+    grid-template-columns: 1fr;
+  }
+  .grid_instruments {
     grid-template-columns: 1fr;
   }
 }
