@@ -17,6 +17,9 @@ a, u {
 a:visited, a:hover, a:active, a:link {
   color: black;
 }
+input, textarea, select{
+  width: 100%;
+}
 
 .navbar {
   margin: 0 auto;
@@ -279,6 +282,25 @@ a:visited, a:hover, a:active, a:link {
   margin: 0 auto;
 }
 
+/* ADD INSTRUMENT FORM */
+.addinstrument {
+  margin-top: 27px;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 7px 13px -6px rgba(36, 98, 142, 0.23);
+  border: 1px solid rgba(36, 98, 142, 0.23);
+  display: flex;
+  justify-content: center;
+}
+
+.addinstrument_form {
+  margin: 71px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 0.4;
+}
+
 .region {
   width: 100%;
   height: 273px;
@@ -302,21 +324,6 @@ a:visited, a:hover, a:active, a:link {
 .region_name {
   order: 1;
   align-self: center;
-}
-
-.region_choice {
-  width: 100%;
-  margin: 0 auto;
-  margin-top: 20px;
-}
-
-.region_form {
-  width: 200px;
-  margin: 25px auto;
-}
-
-.region_choice__title {
-  text-align: center;
 }
 
 .region_img {
