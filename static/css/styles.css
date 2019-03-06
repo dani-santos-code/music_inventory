@@ -285,6 +285,7 @@ input, textarea, select{
 .details_container {
   display: flex;
   margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 .details_card_header {

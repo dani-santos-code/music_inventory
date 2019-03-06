@@ -71,7 +71,6 @@ def showLogin():
                     for x in range(32))
     login_session['state'] = state
     login_session.permanent = True
-    # flash('You have successfully logged in')
     return redirect(uri, code=302)
 
 @app.route('/logout')
@@ -93,7 +92,7 @@ def google_auth_redirect():
     oauth_session = OAuth2Session(CLIENT_ID, CLIENT_SECRET, scope=AUTHORIZATION_SCOPE, state=state, redirect_uri=AUTH_REDIRECT_URI)
     oauth2_tokens = oauth_session.fetch_access_token(ACCESS_TOKEN_URI, authorization_response=request.url)
     login_session[AUTH_TOKEN_KEY] = oauth2_tokens
-    return redirect('{}/dashboard'.format(BASE_URI), code=302)
+    return redirect('/create'.format(BASE_URI), code=302)
 
 def is_logged_in():
     return True if AUTH_TOKEN_KEY in login_session else False
@@ -149,7 +148,6 @@ def showAsianInstruments():
         user_info = None
     title = "Asian Instruments"
     region = session.query(Region).filter_by(name="Asia").one()
-    print(region)
     asian_instruments = session.query(Instrument).filter_by(region=region)
     return render_template('asia.html', asian_instruments=asian_instruments, user=user_info, title=title)
 
