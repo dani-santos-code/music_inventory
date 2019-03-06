@@ -1,17 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 
-
 {% for i in instrument %}
-<h1>{{i.name}}</h1>
-    <div class="instrumentcard">
-      <h2>{{i.name}}</h2>
-        <p>{{i.description}}</p>
-        <img src='{{i.picture}}' height=60 width=60/>
+    <div class="details_container">
+      <div class="details_card_header">
+        <div class="details_image_wrapper">
+          <img class="details_image" src='{{i.picture}}' height=60 width=60/>
+        </div>
         {% if i.credit %}
-            <span>{{i.credit}}</span>
+            <span>{{i.credit[:10]}}</span>
         {% endif %}
       </div>
+      <div class="details_description">
+        <h2>{{i.name}}</h2>
+        <br>
+        <p>{{i.description}}</p>
+      </div>
+    </div>
 {% endfor %}
 
 {% endblock %}

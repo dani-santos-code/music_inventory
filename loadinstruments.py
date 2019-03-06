@@ -97,6 +97,22 @@ instrument2 = Instrument(user_id=2, name="Ghungroos",
 session.add(instrument2)
 session.commit()
 
+instrument3 = Instrument(user_id=2, name="Erhu",
+                         description="The erhu is a two-stringed bowed musical instrument and is known in the Western world as the 'Chinese violin' or a 'Chinese two-stringed fiddle.'",
+                         picture="https://hamiltonphilharmonic.files.wordpress.com/2014/05/erhu1.jpg",
+                         region=region3, credit="Hamilton Philarmonic")
+
+session.add(instrument3)
+session.commit()
+
+instrument4 = Instrument(user_id=2, name="Guzheng",
+                         description="TThe guzheng is a 21-stringed zither, which is an instrument that has strings stretched over movable bridges across a long, flat body. Originally made with silk strings, contemporary guzhengs now have strings made from metal-nylon. The instrument is usually plucked with shells of hawksbill.",
+                         picture="https://hamiltonphilharmonic.files.wordpress.com/2014/05/931.jpg?w=600&h=450",
+                         region=region3, credit="Hamilton Philarmonic")
+
+session.add(instrument4)
+session.commit()
+
 # Instruments in Europe
 
 region4 = Region(name="Europe")

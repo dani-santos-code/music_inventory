@@ -282,6 +282,39 @@ input, textarea, select{
   margin: 0 auto;
 }
 
+.details_container {
+  display: flex;
+  margin-top: 60px;
+}
+
+.details_card_header {
+  display: flex;
+  flex-direction: column;
+  background-color: #85f5ee;
+  width: 216px;
+  height: 175px;
+  text-align: center;
+}
+
+.details_description {
+  width: 50%;
+  margin-left: 60px;
+}
+
+.details_image_wrapper {
+  background-color: white;
+  width: 90%;
+  height: 70%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.details_image {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+}
 /* ADD INSTRUMENT FORM */
 .addinstrument {
   margin-top: 27px;
