@@ -31,7 +31,10 @@
     <label for="name"><strong>Credit:</strong></label>
     <input type ="text" maxlength="50" name="credit" placeholder="Where did you get this info?">
     <br>
-    <button type="submit" id="submit" value="submit">Add 🎈</button>
+    <div>
+      <input class="form_cancel" type="button" name="cancel" value="cancel" onClick="window.location='/';"/>
+      <button class="form_submit" type="submit" id="submit" value="submit">Add</button>
+    </div>
   </form>
 </div>
 {% endblock %}

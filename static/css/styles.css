@@ -291,14 +291,38 @@ input, textarea, select{
   border: 1px solid rgba(36, 98, 142, 0.23);
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .addinstrument_form {
-  margin: 71px 0;
+  margin: 71px auto;
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex-grow: 0.4;
+}
+
+.form_submit {
+  width: 63px;
+  height: 19px;
+  border-radius: 3px;
+  margin: 0 auto;
+  border: solid 1px #24628e;
+  text-transform: uppercase;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.form_cancel {
+  color: #d0021b;
+  width: 80px;
+  height: 19px;
+  border-radius: 3px;
+  border: solid 1px #d0021b;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .region {
