@@ -101,7 +101,6 @@ def is_logged_in():
 def showDashboard():
     if is_logged_in():
         user_info = get_user_info()
-        page_url = request.url.encode("utf-8")
         title = "My Instruments"
         instruments = session.query(Instrument).filter_by(user_id=user_info["id"])
         return render_template('dashboard.html', user=user_info, instruments=instruments, title=title)
@@ -279,9 +278,13 @@ def showInstruments(instrument_id):
         user_info = get_user_info()
     else:
         user_info = None
-    instruments = session.query(Instrument).filter_by(id=instrument_id).all()
-    print(instruments)
-    return render_template('details.html', instruments=instruments, user=user_info)
+    instrument = session.query(Instrument).filter_by(id=instrument_id).all()
+    instrument_region = instrument[0].region.name
+    if instrument_region == "Oceania":
+        title = "{}'s Instruments".format(instrument_region)
+    else:
+        title = "{}n Instruments".format(instrument_region)
+    return render_template('details.html', instrument=instrument, user=user_info, title=title)
 
 @app.route('/details/<int:instrument_id>/JSON')
 def instrumentDetailsJSON(instrument_id):

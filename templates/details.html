@@ -2,14 +2,14 @@
 {% block content %}
 
 
-{% for instrument in instruments %}
-<h1>{{instrument.name}}</h1>
+{% for i in instrument %}
+<h1>{{i.name}}</h1>
     <div class="instrumentcard">
-      <h2>{{instrument.name}}</h2>
-        <p>{{instrument.description}}</p>
-        <img src='{{instrument.picture}}' height=60 width=60/>
-        {% if instrument.credit %}
-            <span>{{instrument.credit}}</span>
+      <h2>{{i.name}}</h2>
+        <p>{{i.description}}</p>
+        <img src='{{i.picture}}' height=60 width=60/>
+        {% if i.credit %}
+            <span>{{i.credit}}</span>
         {% endif %}
       </div>
 {% endfor %}

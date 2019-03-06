@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="grid">
+<div class="grid_region">
 {% for region in regions %}
     <div class="grid_item">
         <a href='{{region.name.replace(" ", "_").lower()}}'>
