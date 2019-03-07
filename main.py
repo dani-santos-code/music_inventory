@@ -319,7 +319,7 @@ def deleteInstrument(instrument_id):
         flash('Instrument Successfully Deleted')
         return redirect(url_for('showDashboard'))
     else:
-        return render_template('deleteinstrument.html', instrumentToDelete=instrumentToDelete, user=user)
+        return render_template('deleteinstrument.html', instrumentToDelete=instrumentToDelete, user=user, title="Delete Instrument")
 
 
 if __name__ == '__main__':
