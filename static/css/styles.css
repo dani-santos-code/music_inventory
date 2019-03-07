@@ -445,6 +445,24 @@ input, textarea, select{
   .grid_instruments {
     grid-template-columns: 1fr;
   }
+
+  .details_card_header {
+    align-self: center;
+   }
+
+  .details_description {
+    padding-top: 20px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .details_description h2 {
+    text-align: center;
+  }
+
+  .details_container {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 775px) {
