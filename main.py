@@ -92,7 +92,7 @@ def google_auth_redirect():
     oauth_session = OAuth2Session(CLIENT_ID, CLIENT_SECRET, scope=AUTHORIZATION_SCOPE, state=state, redirect_uri=AUTH_REDIRECT_URI)
     oauth2_tokens = oauth_session.fetch_access_token(ACCESS_TOKEN_URI, authorization_response=request.url)
     login_session[AUTH_TOKEN_KEY] = oauth2_tokens
-    return redirect('/create'.format(BASE_URI), code=302)
+    return redirect('{}/dashboard'.format(BASE_URI), code=302)
 
 def is_logged_in():
     return True if AUTH_TOKEN_KEY in login_session else False
