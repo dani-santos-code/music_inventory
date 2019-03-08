@@ -19,20 +19,6 @@ DBSession = sessionmaker(bind=engine)
 # session.rollback()
 session = DBSession()
 
-
-# Create dummy users
-# User1 = User(name="Donald Duck", email="donald@duck.com", active=True, tokens="7351623abvasd7", avatar="http://www.hsb.com/duck.jpeg", created_at=datetime.datetime.now())
-# session.add(User1)
-# session.commit()
-#
-# User2 = User(name="Freddy Mercury", email="freddy@mercury.com", active=True, tokens="r423abnsvx7365nxd", avatar="http://www.hsb.com/freddyself.jpeg", created_at=datetime.datetime.now())
-# session.add(User2)
-# session.commit()
-#
-# User3 = User(name="Mary Poppins", email="mary@poppins.com", active=False, tokens="17632ssd", avatar="http://www.hsb.com/mary.jpeg", created_at=datetime.datetime.now())
-# session.add(User3)
-# session.commit()
-
 # Instruments in Africa
 region1 = Region(name="Africa")
 

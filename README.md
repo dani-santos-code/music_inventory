@@ -28,12 +28,9 @@ Then run, `vagrant halt` to shut down the VM.
 
 ## Setting up OAuth/Google API Library:
 
-run `sudo pip install google-api-python-client`
+Packages are installed directly when you build your VM. You can find a list of what's installed on the file `pg_config.sh`
 
-run `sudo pip install google-auth`
-
-run `sudo pip install authlib`
 
 ## Running the webapp:
 
-To get the app running, type in `python project.py`
+To get the app running, type in `python main.py`

@@ -273,6 +273,8 @@ def showInstruments(instrument_id):
     instrument_region = instrument[0].region.name
     if instrument_region == "Oceania":
         title = "{}'s Instruments".format(instrument_region)
+    elif instrument_region == "Europe":
+        title = "{}an Instruments".format(instrument_region)
     else:
         title = "{}n Instruments".format(instrument_region)
     return render_template('details.html', instrument=instrument, user=user_info, title=title)
