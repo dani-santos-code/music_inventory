@@ -7,22 +7,22 @@
     <input type="text"
 					 maxlength="50"
 					 name="name"
+                     id="name"
 					 value="{{instrument.name}}" required>
     <br>
     <label for="region"><strong>Region:</strong></label>
     <br>
 		{% with region = instrument.region.name %}
-	    <select name="region">
-				{% if region =="Africa" %}
+	    <select id="region" name="region">
+				{% if region == "Africa"%}
 	      	<option value="Africa" selected>Africa</option>
 				{% else %}
 					<option value="Africa">Africa</option>
 				{% endif %}
-
 				{% if region == "Asia"%}
 	      	<option value="Asia" selected>Asia</option>
 				{% else %}
-					<option value="Asia" selected>Asia</option>
+					<option value="Asia">Asia</option>
 				{% endif %}
 
 				{% if region == "Europe" %}
@@ -55,20 +55,19 @@
     <label for="description"><strong>Description:</strong></label>
     <br>
     <textarea style="height: 200px;"
-							type="text"
-							name="description"
-							value="{{instrument.description}}" required>{{instrument.description}}</textarea>
+              name="description"
+              id="description"
+              required>{{instrument.description}}</textarea>
     <br/>
     <br>
     <label for="picture"><strong>Picture URL (including http://):</strong></label>
     <br>
-    <textarea type="text"
-							name="picture"
-							value="{{instrument.picture}}">{{instrument.picture}}</textarea>
+    <textarea name="picture"
+              id="picture">{{instrument.picture}}</textarea>
     <br/>
-    <label for="name"><strong>Credit:</strong></label>
+    <label for="credit"><strong>Credit:</strong></label>
     <br>
-    <input type ="text" maxlength="50" name="credit" value="{{instrument.credit}}">
+    <input type ="text" maxlength="50" id="credit" name="credit" value="{{instrument.credit}}">
     <br>
     <div>
       <input class="form_cancel" type="button" name="cancel" value="cancel" onClick="window.location='/';"/>
