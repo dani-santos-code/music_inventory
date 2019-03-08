@@ -328,4 +328,4 @@ def deleteInstrument(instrument_id):
 if __name__ == '__main__':
     app.secret_key = '\xf6\xbc\xe3\xfeD\xb5\xf8=\xd1\x80?\x13Hl\x81\x11'
     app.debug = True
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=5000)
