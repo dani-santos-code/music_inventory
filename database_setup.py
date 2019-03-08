@@ -2,35 +2,10 @@ from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
-from sqlalchemy.dialects.postgresql import BOOLEAN, TEXT, TIMESTAMP
+from sqlalchemy.dialects.postgresql import BOOLEAN, TEXT, TIMESTAMP, VARCHAR
 import datetime
 
 Base = declarative_base()
-
-class User(Base):
-    __tablename__ = 'user'
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String(250), nullable=False)
-    email = Column(String(250), nullable=False)
-    active = Column(BOOLEAN, default=False)
-    tokens = Column(TEXT)
-    avatar = Column(String(200))
-    created_at = Column(TIMESTAMP, default=datetime.datetime.utcnow())
-
-    @property
-    def serialize(self):
-       """Return object data in easily serializeable format"""
-       return {
-           'name': self.name,
-           'id': self.id,
-           'email': self.email,
-           'active': self.active,
-           'tokens': self.tokens,
-           'avatar': self.avatar,
-           'created_at': self.created_at,
-       }
-
 
 class Region(Base):
     __tablename__ = 'region'
@@ -57,8 +32,8 @@ class Instrument(Base):
     picture = Column(String(250), nullable = False)
     region_id = Column(Integer,ForeignKey('region.id'))
     region = relationship(Region)
-    user_id = Column(Integer,ForeignKey('user.id'))
-    user = relationship(User)
+    user_id = Column(Integer)
+    user_name = Column(String(250))
 
     @property
     def serialize(self):
@@ -70,6 +45,7 @@ class Instrument(Base):
            'region': self.region.name,
            'picture_url': self.picture,
            'credit': self.credit,
+           'user_name': self.user_name,
        }
 
 engine = create_engine('sqlite:///instruments.db')

@@ -166,25 +166,13 @@ input, textarea, select{
   flex-wrap: wrap;
 }
 
-.cta_create {
-  box-shadow: 1px 2px 2px 3px rgba(30,186,149);
-  border-radius: 5px;
-  background-color: rgba(30,186,149, 0.1);
-  font-weight: bold;
-  margin: 40px auto;
-  width: 150px;
-  height: 45px;
-  text-align: center;
-}
-
 .cta_create_region {
   box-shadow: 1px 2px 2px 3px rgba(30,186,149);
   border-radius: 5px;
   background-color: rgba(30,186,149, 0.1);
   font-weight: bold;
   margin: 40px auto;
-  width: 250px;
-  height: 45px;
+  padding: 10px 20px;
   text-align: center;
 }
 
@@ -472,8 +460,8 @@ input, textarea, select{
   }
 
   .instrumentsbg {
-    font-size: 13px;
-    height: 81px;
+    font-size: 12px;
+    height: 68px;
   }
 
   .instrumentsbg a {

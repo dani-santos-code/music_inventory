@@ -8,7 +8,7 @@ from authlib.client import OAuth2Session
 import google.oauth2.credentials
 import googleapiclient.discovery
 
-from database_setup import Base, Region, Instrument, User
+from database_setup import Base, Region, Instrument
 
 app = Flask(__name__)
 
@@ -252,8 +252,9 @@ def newInstrument():
     if request.method == 'POST':
         user_info = get_user_info()
         user_id = user_info["id"]
+        user_name = user_info["name"]
         region = session.query(Region).filter_by(name=request.form['region']).one()
-        newInstrument = Instrument(user_id=user_id, name=request.form['name'], description=request.form['description'], picture=request.form[
+        newInstrument = Instrument(user_id=user_id, user_name=user_name, name=request.form['name'], description=request.form['description'], picture=request.form[
                            'picture'], region=region, credit=request.form['credit'])
         session.add(newInstrument)
         session.commit()

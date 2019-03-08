@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if instruments %}
-  <div class="cta_create"><a href="/create">Add an Instrument!</a></div>
+  <div class="instruments_header"><a class="cta_create_region" href="/create">Add an Instrument!</a></div>
   <div class="table">
     {% for instrument in instruments %}
     <div class="table_title">
@@ -11,7 +11,11 @@
     </div>
     <div class="instrument">
         <div class="instrument_info">
-          <a href="/details/{{instrument.id}}"><img class="table_img" src='{{instrument.picture}}'/></a>
+          {% if instrument.picture %}
+            <a href="/details/{{instrument.id}}"><img class="table_img" src='{{instrument.picture}}'/></a>
+          {% else %}
+            <a href="/details/{{instrument.id}}"><img class="table_img" src="/static/css/nopic.svg"/></a>
+          {% endif %}
           <p class="instrument_name">{{instrument.name}}</p>
         </div>
         <div class="edit_and_delete" style="display:flex;">
