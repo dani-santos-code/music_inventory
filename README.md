@@ -14,7 +14,7 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 
 4. Run `vagrant up` followed by `vagrant ssh`.
 
-5. Run `cd /vagrant`.
+5. Run `cd /vagran/catalog`.
 
 *Notice*:  In case you want to stop the machine from running on localhost, type in `sudo halt`.Then run, `vagrant halt` to shut down the VM.
 
@@ -27,4 +27,5 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 
 ## Running the webapp:
 
-To get the app running, type in `python main.py`
+To get the app running, type in `python main.py` which will run the website at http://localhost:8000
+
