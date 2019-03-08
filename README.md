@@ -16,8 +16,7 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 
 5. Run `cd /vagrant`.
 
-6. To stop the machine from running on localhost, type in `sudo halt`.
-Then run, `vagrant halt` to shut down the VM.
+*Notice*:  In case you want to stop the machine from running on localhost, type in `sudo halt`.Then run, `vagrant halt` to shut down the VM.
 
 ## Setting up the database and adding dummy data:
 
