@@ -330,7 +330,7 @@ def edit_instrument(instrument_id):
         session.add(edited_instrument)
         session.commit()
         flash('Instrument Successfully Edited')
-        return redirect(url_for('show_instruments', instrument_id=edited_instrument.id))
+        return redirect(url_for('show_instrument_details', instrument_id=edited_instrument.id))
     else:
         user = get_user_info()
         return render_template('editinstrument.html', instrument_id=edited_instrument.id, instrument=edited_instrument, user=user, title="Edit Instrument")
