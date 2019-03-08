@@ -11,7 +11,7 @@ class Region(Base):
     __tablename__ = 'region'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String(250), nullable=False)
+    name = Column(String(250), nullable=False, unique=True)
 
     @property
     def serialize(self):
