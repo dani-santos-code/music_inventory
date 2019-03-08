@@ -51,3 +51,6 @@ class Instrument(Base):
 engine = create_engine('sqlite:///instruments.db')
 
 Base.metadata.create_all(engine)
+
+if __name__ == '__main__':
+    print("----> Database Setup complete")
