@@ -12,9 +12,9 @@
     <div class="instrument">
         <div class="instrument_info">
           {% if instrument.picture %}
-            <a href="/details/{{instrument.id}}"><img class="table_img" src='{{instrument.picture}}'/></a>
+            <a href="/details/{{instrument.id}}"><img class="table_img" src='{{instrument.picture}}' alt="instrument picture"/></a>
           {% else %}
-            <a href="/details/{{instrument.id}}"><img class="table_img" src="/static/css/nopic.svg"/></a>
+            <a href="/details/{{instrument.id}}"><img class="table_img" src="/static/images/nopic.svg" alt="no picture"/></a>
           {% endif %}
           <p class="instrument_name">{{instrument.name}}</p>
         </div>

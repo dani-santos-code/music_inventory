@@ -7,7 +7,7 @@
           <div class="region">
               <h3 class="region_name">{{region.name}}</h3>
               {% with formatted_name = region.name.replace(" ", "_").lower() %}
-              <img class="region_img" src="/static/css/{{formatted_name}}.svg"/>
+              <img class="region_img" src="/static/images/{{formatted_name}}.svg" alt="region image"/>
               {% endwith %}
               <div class="moreinfo"><p class="moreinfo_text">See More</p></div>
           </div>
