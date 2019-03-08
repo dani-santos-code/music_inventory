@@ -30,8 +30,8 @@ session = scoped_session(DBSession)
 ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
 AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent'
 AUTHORIZATION_SCOPE ='openid email profile'
-AUTH_REDIRECT_URI = 'http://localhost:5000/gCallback'
-BASE_URI = 'http://localhost:5000'
+AUTH_REDIRECT_URI = 'http://localhost:8000/gCallback'
+BASE_URI = 'http://localhost:8000'
 CLIENT_ID = '359568122134-niii8bh1f3l32b466s6qna4867lbq45p.apps.googleusercontent.com'
 CLIENT_SECRET = 'T1iIGSdpiw9Tj-gPCnKQdyNy'
 
