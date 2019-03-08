@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="addinstrument">
-  <form class="addinstrument_form" action="{{ url_for('newInstrument') }}" method="POST">
+  <form class="addinstrument_form" action="{{ url_for('add_new_instrument') }}" method="POST">
     <label for="name"><strong>Instrument name:</strong></label>
     <br>
     <input type="text" maxlength="50" name="name" placeholder="Name of the instrument" required>

@@ -7,6 +7,7 @@ import datetime
 
 Base = declarative_base()
 
+
 class Region(Base):
     __tablename__ = 'region'
 
@@ -15,15 +16,15 @@ class Region(Base):
 
     @property
     def serialize(self):
-       """Return object data in easily serializeable format"""
-       return {
+        """Return object data in easily serializeable format"""
+        return {
            'name': self.name,
            'id': self.id,
        }
 
+
 class Instrument(Base):
     __tablename__ = 'instrument'
-
 
     name = Column(String(120), nullable = False)
     id = Column(Integer, primary_key = True)
@@ -37,8 +38,8 @@ class Instrument(Base):
 
     @property
     def serialize(self):
-       """Return object data in easily serializeable format"""
-       return {
+        """Return object data in easily serializeable format"""
+        return {
            'name': self.name,
            'id': self.id,
            'description': self.description,
@@ -46,7 +47,8 @@ class Instrument(Base):
            'picture_url': self.picture,
            'credit': self.credit,
            'user_name': self.user_name,
-       }
+         }
+
 
 engine = create_engine('sqlite:///instruments.db')
 
