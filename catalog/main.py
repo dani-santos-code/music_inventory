@@ -1,8 +1,11 @@
-from flask import Flask, render_template, request, make_response, redirect, jsonify, url_for, flash, session as login_session
+from flask import Flask, render_template, request, \
+    make_response, redirect, jsonify, url_for, \
+    flash, session as login_session
 import functools
 import os
-import random, string
-from sqlalchemy import create_engine, asc
+import random
+import string
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 from authlib.client import OAuth2Session
 import google.oauth2.credentials
@@ -27,13 +30,16 @@ https://docs.sqlalchemy.org/en/latest
 session = scoped_session(DBSession)
 
 # OAuth Credentials
-# Notice: Ideally, this should be in a .env file that would be transferred among team members
+# Notice: Ideally, this should be in a
+# .env file that would be transferred among team members
 ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
-AUTHORIZATION_URL = 'https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&prompt=consent'
+AUTHORIZATION_URL = 'https://accounts.google.com/o/' \
+                    'oauth2/v2/auth?access_type=offline&prompt=consent'
 AUTHORIZATION_SCOPE = 'openid email profile'
 AUTH_REDIRECT_URI = 'http://localhost:8000/gCallback'
 BASE_URI = 'http://localhost:8000'
-CLIENT_ID = '359568122134-niii8bh1f3l32b466s6qna4867lbq45p.apps.googleusercontent.com'
+CLIENT_ID = '359568122134-niii8bh1f3l32b466s6qna4867lbq45p.' \
+            'apps.googleusercontent.com'
 CLIENT_SECRET = 'T1iIGSdpiw9Tj-gPCnKQdyNy'
 
 # Session credentials
@@ -58,12 +64,15 @@ def autoversion_filter(filename):
     return new_filename
 
 
-# no_cache prevents browser caching of responses from the login/logout endpoints
+# no_cache prevents browser caching of
+# responses from the login/logout endpoints
 def no_cache(view):
     @functools.wraps(view)
     def no_cache_impl(*args, **kwargs):
         response = make_response(view(*args, **kwargs))
-        response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+        response.headers['Cache-Control'] = 'no-store, ' \
+                                            'no-cache, ' \
+                                            'must-revalidate, max-age=0'
         response.headers['Pragma'] = 'no-cache'
         response.headers['Expires'] = '-1'
         return response
@@ -74,9 +83,12 @@ def no_cache(view):
 @app.route('/login')
 @no_cache
 def show_login():
-    oauth_session = OAuth2Session(CLIENT_ID, CLIENT_SECRET, scope=AUTHORIZATION_SCOPE,
+    oauth_session = OAuth2Session(CLIENT_ID,
+                                  CLIENT_SECRET,
+                                  scope=AUTHORIZATION_SCOPE,
                                   redirect_uri=AUTH_REDIRECT_URI)
-    uri, state = oauth_session.create_authorization_url(AUTHORIZATION_URL)
+    uri, state = oauth_session.\
+        create_authorization_url(AUTHORIZATION_URL)
     state = "".join(random.choice
                     (string.ascii_uppercase + string.digits)
                     for x in range(32))
@@ -107,8 +119,9 @@ def google_auth_redirect():
     oauth_session = OAuth2Session(CLIENT_ID, CLIENT_SECRET,
                                   scope=AUTHORIZATION_SCOPE, state=state,
                                   redirect_uri=AUTH_REDIRECT_URI)
-    oauth2_tokens = oauth_session.fetch_access_token(ACCESS_TOKEN_URI,
-                                                     authorization_response=request.url)
+    oauth2_tokens = oauth_session.\
+        fetch_access_token(ACCESS_TOKEN_URI,
+                           authorization_response=request.url)
     login_session[AUTH_TOKEN_KEY] = oauth2_tokens
     return redirect('{}/dashboard'.format(BASE_URI), code=302)
 
@@ -137,7 +150,9 @@ def build_credentials():
 # gets user object
 def get_user_info():
     credentials = build_credentials()
-    oauth2_client = googleapiclient.discovery.build('oauth2', 'v2', credentials=credentials)
+    oauth2_client = googleapiclient.\
+        discovery.build('oauth2', 'v2',
+                        credentials=credentials)
     return oauth2_client.userinfo().get().execute()
 
 
@@ -148,8 +163,12 @@ def show_dashboard():
     if is_logged_in():
         user_info = get_user_info()
         title = "My Instruments"
-        instruments = session.query(Instrument).filter_by(user_id=user_info["id"])
-        return render_template('dashboard.html', user=user_info, instruments=instruments, title=title)
+        instruments = session.query(Instrument).\
+            filter_by(user_id=user_info["id"])
+        return render_template('dashboard.html',
+                               user=user_info,
+                               instruments=instruments,
+                               title=title)
     if not is_logged_in():
         return redirect(url_for('show_regions'), code=302)
 
@@ -170,9 +189,14 @@ def show_regions():
     title = "Instruments Per Region"
     if is_logged_in():
         user_info = get_user_info()
-        return render_template('main.html', regions=regions, user=user_info, title=title)
+        return render_template('main.html',
+                               regions=regions,
+                               user=user_info,
+                               title=title)
     else:
-        return render_template('main.html', regions=regions, title=title)
+        return render_template('main.html',
+                               regions=regions,
+                               title=title)
 
 
 # =====> ASIA VIEW <=====
@@ -206,7 +230,8 @@ def show_asian_instruments():
 def africa_json():
     region = session.query(Region).filter_by(name="Africa").one()
     african_instruments = session.query(Instrument).filter_by(region=region)
-    return jsonify(african_instruments=[i.serialize for i in african_instruments])
+    return jsonify(african_instruments=[i.serialize
+                                        for i in african_instruments])
 
 
 # Show all African Instruments
@@ -219,8 +244,10 @@ def show_african_instruments():
     title = "African Instruments"
     region = session.query(Region).filter_by(name="Africa").one()
     african_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('africa.html', african_instruments=african_instruments,
-                           user=user_info, title=title)
+    return render_template('africa.html',
+                           african_instruments=african_instruments,
+                           user=user_info,
+                           title=title)
 
 
 # =====> NORTH AMERICAN VIEW <=====
@@ -229,8 +256,11 @@ def show_african_instruments():
 @app.route('/regions/north_america/JSON')
 def north_america_json():
     region = session.query(Region).filter_by(name="North America").one()
-    north_american_instruments = session.query(Instrument).filter_by(region=region)
-    return jsonify(north_american_instruments=[i.serialize for i in north_american_instruments])
+    north_american_instruments = session.\
+        query(Instrument).filter_by(region=region)
+    return jsonify(north_american_instruments=[i.serialize
+                                               for i in
+                                               north_american_instruments])
 
 
 # Show all North American Instruments
@@ -242,10 +272,12 @@ def show_north_american_instruments():
         user_info = None
     title = "North American Instruments"
     region = session.query(Region).filter_by(name="North America").one()
-    north_american_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('north_america.html',
-                           north_american_instruments=north_american_instruments,
-                           user=user_info, title=title)
+    north_american_instruments = session.\
+        query(Instrument).filter_by(region=region)
+    return render_template(
+        'north_america.html',
+        north_american_instruments=north_american_instruments,
+        user=user_info, title=title)
 
 
 # =====> SOUTH AMERICAN VIEW <=====
@@ -254,8 +286,11 @@ def show_north_american_instruments():
 @app.route('/regions/south_america/JSON')
 def south_america_json():
     region = session.query(Region).filter_by(name="South America").one()
-    south_american_instruments = session.query(Instrument).filter_by(region=region)
-    return jsonify(south_american_instruments=[i.serialize for i in south_american_instruments])
+    south_american_instruments = session.\
+        query(Instrument).filter_by(region=region)
+    return jsonify(south_american_instruments=[i.serialize
+                                               for i in
+                                               south_american_instruments])
 
 
 # Show all South American Instruments
@@ -267,10 +302,12 @@ def show_south_american_instruments():
         user_info = None
     title = "South American Instruments"
     region = session.query(Region).filter_by(name="South America").one()
-    south_american_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('south_america.html',
-                           south_american_instruments=south_american_instruments,
-                           user=user_info, title=title)
+    south_american_instruments = session.\
+        query(Instrument).filter_by(region=region)
+    return render_template(
+        'south_america.html',
+        south_american_instruments=south_american_instruments,
+        user=user_info, title=title)
 
 
 # =====> EUROPE VIEW <=====
@@ -279,8 +316,11 @@ def show_south_american_instruments():
 @app.route('/regions/europe/JSON')
 def europe_json():
     region = session.query(Region).filter_by(name="Europe").one()
-    european_instruments = session.query(Instrument).filter_by(region=region)
-    return jsonify(european_instruments=[i.serialize for i in european_instruments])
+    european_instruments = session.\
+        query(Instrument).filter_by(region=region)
+    return jsonify(european_instruments=[i.serialize
+                                         for i in
+                                         european_instruments])
 
 
 # Show all European Instruments
@@ -292,9 +332,12 @@ def show_european_instruments():
         user_info = None
     title = "European Instruments"
     region = session.query(Region).filter_by(name="Europe").one()
-    european_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('europe.html', european_instruments=european_instruments,
-                           user=user_info, title=title)
+    european_instruments = session.\
+        query(Instrument).filter_by(region=region)
+    return render_template('europe.html',
+                           european_instruments=european_instruments,
+                           user=user_info,
+                           title=title)
 
 
 # =====> OCEANIA VIEW <=====
@@ -303,8 +346,11 @@ def show_european_instruments():
 @app.route('/regions/oceania/JSON')
 def oceania_json():
     region = session.query(Region).filter_by(name="Oceania").one()
-    oceania_instruments = session.query(Instrument).filter_by(region=region)
-    return jsonify(oceania_instruments=[i.serialize for i in oceania_instruments])
+    oceania_instruments = session.\
+        query(Instrument).filter_by(region=region)
+    return jsonify(oceania_instruments=[i.serialize
+                                        for i in
+                                        oceania_instruments])
 
 
 # Show all Instruments from Oceania
@@ -316,9 +362,12 @@ def show_oceania_instruments():
         user_info = None
     title = "Oceania's Instruments"
     region = session.query(Region).filter_by(name="Oceania").one()
-    oceania_instruments = session.query(Instrument).filter_by(region=region)
-    return render_template('oceania.html', oceania_instruments=oceania_instruments,
-                           user=user_info, title=title)
+    oceania_instruments = session.\
+        query(Instrument).filter_by(region=region)
+    return render_template('oceania.html',
+                           oceania_instruments=oceania_instruments,
+                           user=user_info,
+                           title=title)
 
 
 # =====> INSTRUMENTS DETAILS VIEW <=====
@@ -327,8 +376,10 @@ def show_oceania_instruments():
 # TODO: look instrument up by name
 @app.route('/details/<int:instrument_id>/JSON')
 def instrument_details_json(instrument_id):
-    instrument = session.query(Instrument).filter_by(id=instrument_id)
-    return jsonify(instrument=[i.serialize for i in instrument])
+    instrument = session.\
+        query(Instrument).filter_by(id=instrument_id)
+    return jsonify(instrument=[i.serialize
+                               for i in instrument])
 
 
 # Show all the details of a given instrument based on its ID
@@ -339,7 +390,8 @@ def show_instrument_details(instrument_id):
         user_info = get_user_info()
     else:
         user_info = None
-    instrument = session.query(Instrument).filter_by(id=instrument_id).all()
+    instrument = session.query(Instrument).\
+        filter_by(id=instrument_id).all()
     instrument_region = instrument[0].region.name
     if instrument_region == "Oceania":
         title = "{}'s Instruments".format(instrument_region)
@@ -347,7 +399,10 @@ def show_instrument_details(instrument_id):
         title = "{}an Instruments".format(instrument_region)
     else:
         title = "{}n Instruments".format(instrument_region)
-    return render_template('details.html', instrument=instrument, user=user_info, title=title)
+    return render_template('details.html',
+                           instrument=instrument,
+                           user=user_info,
+                           title=title)
 
 
 # =====> CRUD OPERATIONS - CREATE, UPDATE, DELETE <=====
@@ -363,17 +418,23 @@ def add_new_instrument():
         user_info = get_user_info()
         user_id = user_info["id"]
         user_name = user_info["name"]
-        region = session.query(Region).filter_by(name=request.form['region']).one()
+        region = session.query(Region).\
+            filter_by(name=request.form['region']).one()
         new_instrument = Instrument(user_id=user_id, user_name=user_name,
-                                    name=request.form['name'], description=request.form['description'],
-                                    picture=request.form['picture'], region=region,
+                                    name=request.form['name'],
+                                    description=request.form['description'],
+                                    picture=request.form['picture'],
+                                    region=region,
                                     credit=request.form['credit'])
         session.add(new_instrument)
         session.commit()
-        flash('New Instrument {} Successfully Added to {}'.format(new_instrument.name, region.name))
+        flash('New Instrument {} Successfully Added to {}'
+              .format(new_instrument.name, region.name))
         return redirect(url_for('show_regions'))
     else:
-        return render_template('newinstrument.html', user=user, title="Add New Instrument")
+        return render_template('newinstrument.html',
+                               user=user,
+                               title="Add New Instrument")
 
 
 # Update/Edit an instrument
@@ -381,12 +442,14 @@ def add_new_instrument():
 def edit_instrument(instrument_id):
     if not is_logged_in():
         return redirect('/login')
-    edited_instrument = session.query(Instrument).filter_by(id=instrument_id).one()
+    edited_instrument = session.\
+        query(Instrument).filter_by(id=instrument_id).one()
     if request.method == 'POST':
         if request.form['name']:
             edited_instrument.name = request.form['name']
         if request.form['region']:
-            edited_instrument.region = session.query(Region).filter_by(name=request.form['region']).one()
+            edited_instrument.region = session.\
+                query(Region).filter_by(name=request.form['region']).one()
         if request.form['description']:
             edited_instrument.description = request.form['description']
         if request.form['picture']:
@@ -396,11 +459,15 @@ def edit_instrument(instrument_id):
         session.add(edited_instrument)
         session.commit()
         flash('Instrument Successfully Edited')
-        return redirect(url_for('show_instrument_details', instrument_id=edited_instrument.id))
+        return redirect(url_for('show_instrument_details',
+                                instrument_id=edited_instrument.id))
     else:
         user = get_user_info()
-        return render_template('editinstrument.html', instrument_id=edited_instrument.id,
-                               instrument=edited_instrument, user=user, title="Edit Instrument")
+        return render_template('editinstrument.html',
+                               instrument_id=edited_instrument.id,
+                               instrument=edited_instrument,
+                               user=user,
+                               title="Edit Instrument")
 
 
 # Delete an instrument
@@ -410,16 +477,18 @@ def delete_instrument(instrument_id):
         return redirect('/login')
     else:
         user = get_user_info()
-    instrument_to_delete = session.query(Instrument).filter_by(id=instrument_id).one()
+    instrument_to_delete = session.\
+        query(Instrument).filter_by(id=instrument_id).one()
     if request.method == 'POST':
         session.delete(instrument_to_delete)
         session.commit()
         flash('Instrument Successfully Deleted')
         return redirect(url_for('show_dashboard'))
     else:
-        return render_template('deleteinstrument.html',
-                               instrument_to_delete=instrument_to_delete,
-                               user=user, title="Delete Instrument")
+        return render_template(
+            'deleteinstrument.html',
+            instrument_to_delete=instrument_to_delete,
+            user=user, title="Delete Instrument")
 
 
 if __name__ == '__main__':
