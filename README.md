@@ -7,8 +7,8 @@ either by accessing the web page or by accessing the provided endpoints.
 In order to add instruments to the inventory, edit or delete them, you
 need to sign in with your Google Account.
 
-It is a project for the Full Stack Web Development
-Nanodegree @Udacity (https://eu.udacity.com/course/full-stack-web-developer-nanodegree--nd004)
+It is a project for the [Full Stack Web Development
+Nanodegree] @Udacity(https://eu.udacity.com/course/full-stack-web-developer-nanodegree--nd004)
 
 This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in combination with Vagrant. See instructions to get it running.
 
