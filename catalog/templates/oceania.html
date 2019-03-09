@@ -2,18 +2,18 @@
 {% block content %}
 <div>
   <div class="instruments_header ">
-    <div class="cta_create_region"><a href="/create">Add an Instrument</a></div>
+    <div class="ctacreate"><a href="/create">Add an Instrument</a></div>
   </div>
 <div class="grid_instruments">
   {% for instrument in oceania_instruments %}
       <div class="grid_item">
           <a href='/details/{{instrument.id}}'>
-            <div class="instrument_wrapper">
-              <img class="instrument_img" src="{{instrument.picture}}"/>
+            <div class="instrument__wrapper">
+              <img class="instrument__img" src="{{instrument.picture}}"/>
             </div>
             <div class="region">
                 <h3 class="region_name">{{instrument.name}}</h3>
-                <p class="instrument_descrip">{{instrument.description[:40]}}...</p>
+                <p class="instrument__description">{{instrument.description[:40]}}...</p>
                 <div class="moreinfo"><p class="moreinfo_text">See More</p></div>
             </div>
           </a>

@@ -2,25 +2,25 @@
 {% block content %}
 
 {% if instruments %}
-  <div class="instruments_header"><a class="cta_create_region" href="/create">Add an Instrument!</a></div>
+  <div class="instruments_header"><a class="ctacreate" href="/create">Add an Instrument!</a></div>
   <div class="table">
     {% for instrument in instruments %}
-    <div class="table_title">
+    <div class="table__title">
       <p>Instrument</p>
       <p>Title</p>
     </div>
     <div class="instrument">
-        <div class="instrument_info">
+        <div class="instrument__info">
           {% if instrument.picture %}
-            <a href="/details/{{instrument.id}}"><img class="table_img" src='{{instrument.picture}}' alt="instrument picture"/></a>
+            <a href="/details/{{instrument.id}}"><img class="table__img" src='{{instrument.picture}}' alt="instrument picture"/></a>
           {% else %}
-            <a href="/details/{{instrument.id}}"><img class="table_img" src="/static/images/nopic.svg" alt="no picture"/></a>
+            <a href="/details/{{instrument.id}}"><img class="table__img" src="/static/images/nopic.svg" alt="no picture"/></a>
           {% endif %}
-          <p class="instrument_name">{{instrument.name}}</p>
+          <p class="instrument__name">{{instrument.name}}</p>
         </div>
-        <div class="edit_and_delete" style="display:flex;">
-          <a class="userpref" href="/edit/{{instrument.id}}"><div class="edit">Edit</div></a>
-          <a class="userpref" href="/delete/{{instrument.id}}"><div class="delete">Delete</div></a>
+        <div class="edit" style="display:flex;">
+          <a class="userpref" href="/edit/{{instrument.id}}"><div class="edit__edit">Edit</div></a>
+          <a class="userpref" href="/delete/{{instrument.id}}"><div class="edit__delete">Delete</div></a>
         </div>
       </div>
     {% endfor %}

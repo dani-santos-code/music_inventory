@@ -26,7 +26,7 @@ input, textarea, select{
 }
 
 /* =================
-      NAVBAR
+      HEADER
 ================== */
 
 .navbar {
@@ -98,7 +98,7 @@ input, textarea, select{
 }
 
 
-.instrumentsbg {
+.background {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -112,11 +112,17 @@ input, textarea, select{
   font-size: 20px;
 }
 
-.instrumentsbg a {
+.background a {
   font-size: 8px;
   margin: 10px;
   align-self: flex-end;
 }
+
+
+/* ===================================
+      DASHBOARD
+====================================== */
+
 
 .table {
   width: 70%;
@@ -125,7 +131,8 @@ input, textarea, select{
   box-shadow: 0 7px 13px -6px rgba(36, 98, 142, 0.23);
   background-color: #ffffff;
 }
-.table_title {
+
+.table__title {
   display: flex;
   margin: 10px;
   justify-content: space-between;
@@ -134,7 +141,7 @@ input, textarea, select{
   background-color: #fafafc;
 }
 
-.table_img {
+.table__img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -142,6 +149,12 @@ input, textarea, select{
 }
 
 .edit {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.edit__edit {
   width: 63px;
   height: 19px;
   border-radius: 3px;
@@ -152,7 +165,7 @@ input, textarea, select{
   line-height: 16px;
 }
 
-.delete {
+.edit__delete {
   width: 76px;
   height: 19px;
   border-radius: 3px;
@@ -164,12 +177,8 @@ input, textarea, select{
   cursor: pointer;
 }
 
-.edit_and_delete {
-  display: flex;
-  flex-wrap: wrap;
-}
 
-.cta_create_region {
+.ctacreate {
   box-shadow: 1px 2px 2px 3px rgba(30,186,149);
   border-radius: 5px;
   background-color: rgba(30,186,149, 0.1);
@@ -186,16 +195,20 @@ input, textarea, select{
   border-bottom: solid 1px #f1f1f3;
 }
 
-.instrument_info {
+.instrument__info {
   display: flex;
   padding-bottom: 7px;
 }
 
-.instrument_name {
+.instrument__name {
   padding: 10px;
 }
 
-.instrument_img {
+/* ===================================
+      INSTRUMENTS PER REGION
+====================================== */
+
+.instrument__img {
   width: 91px;
   height: 91px;
   border-radius: 50%;
@@ -203,10 +216,9 @@ input, textarea, select{
   margin-bottom: -21px;
   border: solid 5px #85f5ee;
   background-color: #ffffff;
-  border-radius: 50%;
 }
 
-.instrument_wrapper {
+.instrument__wrapper {
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -214,7 +226,7 @@ input, textarea, select{
   background-color: #ffffff;
 }
 
-.instrument_descrip {
+.instrument__description {
   line-height: 20px;
   margin-top: 60px;
 }
@@ -224,8 +236,9 @@ input, textarea, select{
 }
 
 /* ===============================
-          GRIDS LAYOUT
+          GRIDS
    =============================== */
+
 .container {
   width: 100%;
   max-width: 960px;
@@ -402,6 +415,7 @@ input, textarea, select{
   text-transform: uppercase;
   color: #1c304a;
 }
+
 /* ===============================
           MEDIA QUERIES
    =============================== */
@@ -418,23 +432,32 @@ input, textarea, select{
   .grid_region {
     grid-template-columns: 1fr 1fr;
   }
+
   .grid_instruments {
     grid-template-columns: 1fr 1fr;
   }
+
   .region {
     width: 100%;
     height: 270px;
   }
+
 }
 
 /* Breakpoints for Small Screens */
 
 @media (max-width: 430px) {
+
   .grid_region {
     grid-template-columns: 1fr;
   }
+
   .grid_instruments {
     grid-template-columns: 1fr;
+  }
+
+  .edit {
+    justify-content: flex-end;
   }
 
   .details_card_header {
@@ -454,20 +477,22 @@ input, textarea, select{
   .details_container {
     flex-direction: column;
   }
+
 }
 
 @media (max-width: 775px) {
-  .logo_img {
+
+  .logo {
     height: 90px;
     width: 105px;
   }
 
-  .instrumentsbg {
+  .background {
     font-size: 12px;
     height: 68px;
   }
 
-  .instrumentsbg a {
+  .background a {
     font-size: 5px;
   }
 
@@ -481,7 +506,8 @@ input, textarea, select{
     height: 60px;
   }
 
-  .login {
+  .navbar__login {
     height: 60px;
   }
+
 }
