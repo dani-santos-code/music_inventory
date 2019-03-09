@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="addinstrument">
-  <form class="addinstrument_form" action="{{ url_for('add_new_instrument') }}" method="POST">
+<div class="form">
+  <form class="form__addinstrument" action="{{ url_for('add_new_instrument') }}" method="POST">
     <label for="name"><strong>Instrument name:</strong></label>
     <br>
     <input type="text" maxlength="50" name="name" placeholder="Name of the instrument" required>
@@ -31,8 +31,8 @@
     <input type ="text" maxlength="50" name="credit" placeholder="Where did you get this info?">
     <br>
     <div>
-      <input class="form_cancel" type="button" name="cancel" value="cancel" onClick="window.location='/';"/>
-      <button class="form_submit" type="submit" id="submit" value="submit">Add</button>
+      <input class="form__cancel" type="button" name="cancel" value="cancel" onClick="window.location='/';"/>
+      <button class="form__submit" type="submit" id="submit" value="submit">Add</button>
     </div>
   </form>
 </div>

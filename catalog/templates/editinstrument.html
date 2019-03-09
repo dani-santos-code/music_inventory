@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="addinstrument">
-  <form class="addinstrument_form" action="#" method="POST">
+<div class="form">
+  <form class="form__addinstrument" action="#" method="POST">
     <label for="name"><strong>Instrument name:</strong></label>
     <br>
     <input type="text"
@@ -70,8 +70,8 @@
     <input type ="text" maxlength="50" id="credit" name="credit" value="{{instrument.credit}}">
     <br>
     <div>
-      <input class="form_cancel" type="button" name="cancel" value="cancel" onClick="window.location='/';"/>
-      <button class="form_submit" type="submit" id="submit" value="submit">Save</button>
+      <input class="form__cancel" type="button" name="cancel" value="cancel" onClick="window.location='/';"/>
+      <button class="form__submit" type="submit" id="submit" value="submit">Save</button>
     </div>
   </form>
 </div>

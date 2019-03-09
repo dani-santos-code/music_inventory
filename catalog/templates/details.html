@@ -2,16 +2,16 @@
 {% block content %}
 
 {% for i in instrument %}
-    <div class="details_container">
-      <div class="details_card_header">
-        <div class="details_image_wrapper">
-          <img class="details_image" src='{{i.picture}}' height=60 width=60/>
+    <div class="details">
+      <div class="details__header">
+        <div class="details__image_wrapper">
+          <img class="details__image" src='{{i.picture}}' height=60 width=60/>
         </div>
         {% if i.credit %}
             <span>{{i.credit[:10]}}</span>
         {% endif %}
       </div>
-      <div class="details_description">
+      <div class="details__description">
         <h2>{{i.name}}</h2>
         <br>
         <p>{{i.description}}</p>

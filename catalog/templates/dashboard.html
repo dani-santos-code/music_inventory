@@ -2,7 +2,7 @@
 {% block content %}
 
 {% if instruments %}
-  <div class="instruments_header"><a class="ctacreate" href="/create">Add an Instrument!</a></div>
+  <div class="instruments__header"><a class="ctacreate" href="/create">Add an Instrument!</a></div>
   <div class="table">
     {% for instrument in instruments %}
     <div class="table__title">
@@ -18,7 +18,7 @@
           {% endif %}
           <p class="instrument__name">{{instrument.name}}</p>
         </div>
-        <div class="edit" style="display:flex;">
+        <div class="edit">
           <a class="userpref" href="/edit/{{instrument.id}}"><div class="edit__edit">Edit</div></a>
           <a class="userpref" href="/delete/{{instrument.id}}"><div class="edit__delete">Delete</div></a>
         </div>

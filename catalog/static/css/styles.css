@@ -246,7 +246,7 @@ input, textarea, select{
   padding: 20px 20px;
 }
 
-.grid_region {
+.grid__region {
   margin-top: 60px;
   display: grid;
   width: 100%;
@@ -256,7 +256,7 @@ input, textarea, select{
   margin-bottom: 60px;
 }
 
-.grid_instruments {
+.grid__instruments {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr;
@@ -266,7 +266,7 @@ input, textarea, select{
 }
 
 /* ===============================
-          GRID ITEMS LAYOUT
+          BASE LAYOUT
    =============================== */
 
 .grid_item {
@@ -274,13 +274,13 @@ input, textarea, select{
   width: 100%;
 }
 
-.instruments_region {
+.instruments__region {
   margin-top: 30px;
   width: 433px;
   text-align: right;
 }
 
-.instruments_header {
+.instruments__header {
   display: flex;
 }
 
@@ -289,13 +289,23 @@ input, textarea, select{
   margin: 0 auto;
 }
 
-.details_container {
+.flash {
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+/* ===============================
+          DETAILS PAGE
+   =============================== */
+
+.details {
   display: flex;
   margin-top: 60px;
   margin-bottom: 60px;
 }
 
-.details_card_header {
+.details__header {
   display: flex;
   flex-direction: column;
   background-color: #85f5ee;
@@ -304,12 +314,12 @@ input, textarea, select{
   text-align: center;
 }
 
-.details_description {
+.details__description {
   width: 50%;
   margin-left: 60px;
 }
 
-.details_image_wrapper {
+.details__image_wrapper {
   background-color: white;
   width: 90%;
   height: 70%;
@@ -318,13 +328,18 @@ input, textarea, select{
   justify-content: center;
 }
 
-.details_image {
+.details__image {
   width: 120px;
   height: 120px;
   overflow: hidden;
 }
-/* ADD INSTRUMENT FORM */
-.addinstrument {
+
+
+/* ===============================
+          FORMS
+   =============================== */
+
+.form {
   margin-top: 27px;
   width: 100%;
   border-radius: 5px;
@@ -335,7 +350,7 @@ input, textarea, select{
   flex-direction: column;
 }
 
-.addinstrument_form {
+.form__addinstrument {
   margin: 71px auto;
   width: 60%;
   display: flex;
@@ -344,7 +359,7 @@ input, textarea, select{
   flex-grow: 0.4;
 }
 
-.form_submit {
+.form__submit {
   width: 80px;
   color: #24628e;
   height: 19px;
@@ -357,7 +372,7 @@ input, textarea, select{
   cursor: pointer;
 }
 
-.form_cancel {
+.form__cancel {
   color: #d0021b;
   width: 80px;
   height: 19px;
@@ -367,6 +382,10 @@ input, textarea, select{
   text-transform: uppercase;
   cursor: pointer;
 }
+
+/* ===============================
+          ALL REGIONS PAGE
+   =============================== */
 
 .region {
   width: 100%;
@@ -382,23 +401,18 @@ input, textarea, select{
   flex-direction: column;
 }
 
-.flash {
-  width: 100%;
-  margin: 20px auto;
-  text-align: center;
-}
-
-.region_name {
+.region__name {
   order: 1;
   align-self: center;
 }
 
-.region_img {
+.region__img {
   order: 2;
   align-self: center;
   width: 145px;
   height: 128px;
 }
+
 .moreinfo {
   height: 36px;
   width: 145px;
@@ -409,7 +423,7 @@ input, textarea, select{
   order: 3;
 }
 
-.moreinfo_text {
+.moreinfo__text {
   line-height: 32px;
   font-size: 12px;
   text-transform: uppercase;
@@ -429,11 +443,11 @@ input, textarea, select{
 
 /* Breakpoints for Medium Screens */
 @media (max-width: 950px) {
-  .grid_region {
+  .grid__region {
     grid-template-columns: 1fr 1fr;
   }
 
-  .grid_instruments {
+  .grid__instruments {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -448,11 +462,11 @@ input, textarea, select{
 
 @media (max-width: 430px) {
 
-  .grid_region {
+  .grid__region {
     grid-template-columns: 1fr;
   }
 
-  .grid_instruments {
+  .grid__instruments {
     grid-template-columns: 1fr;
   }
 
@@ -460,22 +474,22 @@ input, textarea, select{
     justify-content: flex-end;
   }
 
-  .details_card_header {
+  .details {
+    flex-direction: column;
+  }
+
+  .details__header {
     align-self: center;
    }
 
-  .details_description {
+  .details__description {
     padding-top: 20px;
     width: 80%;
     margin: 0 auto;
   }
 
-  .details_description h2 {
+  .details__description h2 {
     text-align: center;
-  }
-
-  .details_container {
-    flex-direction: column;
   }
 
 }
@@ -496,7 +510,7 @@ input, textarea, select{
     font-size: 5px;
   }
 
-  .grid_item {
+  .grid__item {
     margin-left: 0;
   }
 

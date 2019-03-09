@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 <div>
-  <div class="instruments_header ">
+  <div class="instruments__header ">
     <div class="ctacreate"><a href="/create">Add an Instrument</a></div>
   </div>
-<div class="grid_instruments">
+<div class="grid__instruments">
   {% for instrument in south_american_instruments %}
-      <div class="grid_item">
+      <div class="grid__item">
           <a href='/details/{{instrument.id}}'>
             <div class="instrument__wrapper">
               <img class="instrument__img" src="{{instrument.picture}}"/>
             </div>
             <div class="region">
-                <h3 class="region_name">{{instrument.name}}</h3>
+                <h3 class="region__name">{{instrument.name}}</h3>
                 <p class="instrument__description">{{instrument.description[:40]}}...</p>
-                <div class="moreinfo"><p class="moreinfo_text">See More</p></div>
+                <div class="moreinfo"><p class="moreinfo__text">See More</p></div>
             </div>
           </a>
       </div>

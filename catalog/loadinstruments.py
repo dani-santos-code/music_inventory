@@ -93,47 +93,47 @@ instrument7 = Instrument(user_id=1, name="Ocarina",
                          picture="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/2016-01_Ocarina_front.jpg/500px-2016-01_Ocarina_front.jpg",
                          region=region3, credit="Wikipedia", user_name="Freddy Meercury")
 
-session.add(instrument5)
+session.add(instrument7)
 session.commit()
 
-instrument7 = Instrument(user_id=2, name="Ghungroos",
+instrument8 = Instrument(user_id=2, name="Ghungroos",
                          description="An ancient and classic instrument from India, a ghungroos is a metallic anklet that Indian dancers place around their feet while performing  in ceremonies.",
                          picture="https://4.imimg.com/data4/DN/PQ/MY-107458/ghungroo-500x500.jpg",
                          region=region3, user_name="David Bowie")
 
-session.add(instrument6)
+session.add(instrument8)
 session.commit()
 
-instrument8 = Instrument(user_id=9, name="Erhu",
+instrument9 = Instrument(user_id=9, name="Erhu",
                          description="The erhu is a two-stringed bowed musical instrument and is known in the Western world as the 'Chinese violin' or a 'Chinese two-stringed fiddle.'",
                          picture="https://hamiltonphilharmonic.files.wordpress.com/2014/05/erhu1.jpg",
                          region=region3, credit="Hamilton Philarmonic", user_name="Mark Robson")
 
-session.add(instrument8)
+session.add(instrument9)
 session.commit()
 
-instrument9 = Instrument(user_id=2, name="Guzheng",
+instrument10 = Instrument(user_id=2, name="Guzheng",
                          description="The guzheng is a 21-stringed zither, which is an instrument that has strings stretched over movable bridges across a long, flat body. Originally made with silk strings, contemporary guzhengs now have strings made from metal-nylon. The instrument is usually plucked with shells of hawksbill.",
                          picture="https://hamiltonphilharmonic.files.wordpress.com/2014/05/931.jpg?w=600&h=450",
                          region=region3, credit="Hamilton Philarmonic", user_name="Alfredo Manfredi")
 
-session.add(instrument9)
+session.add(instrument10)
 session.commit()
 
-instrument10 = Instrument(user_id=4, name="Pipa",
+instrument11 = Instrument(user_id=4, name="Pipa",
                          description="The pipa is a four-stringed Chinese musical instrument. The instrument has a pear-shaped wooden body with frets like those on a guitar. It sounds like a banjo.",
                          picture="https://images.chinahighlights.com/2012/10/ba4d7f5b39574dba921f4648_ch_300x240.jpg",
                          region=region3, credit="China Highlights", user_name="Jan Lee")
 
-session.add(instrument10)
+session.add(instrument11)
 session.commit()
 
-instrument11 = Instrument(user_id=7, name="Sur Bahar",
+instrument12 = Instrument(user_id=7, name="Sur Bahar",
                           description="Hand-crafted by Nahasapimapetalan, Sharma & Co., this professional quality bass sitar is imported directly from India for Lawrence-Hodge. Double toomba, 7 main strings, fully carved. Includes lovely case.",
                           picture="http://people.bu.edu/plawrenc/instruments/SITAR/Surbahar.jpe",
                           region=region3, credit="BU", user_name="Lynn Adam")
 
-session.add(instrument11)
+session.add(instrument12)
 session.commit()
 
 # Instruments in Europe
@@ -143,28 +143,28 @@ region4 = Region(name="Europe")
 session.add(region4)
 session.commit()
 
-instrument12 = Instrument(user_id=8, name="Octobass",
+instrument13 = Instrument(user_id=8, name="Octobass",
                           description="Hector Berlioz was an ardent admirer of these massive, three-stringed, whale-like instruments, referring to them in his famous Treatise on Orchestration.",
                           picture="https://rbma.imgix.net/_NRK4545_copy_1600_1067_90.624993dd.jpg?auto=format&w=400",
-                          region=region4, user_name="Mark Ronson")
-
-session.add(instrument12)
-session.commit()
-
-instrument13 = Instrument(user_id=8, name="Hurdy-gurdy",
-                          description="The hurdy-gurdy is a stringed instrument that produces sound by a hand crank-turned, rosined wheel rubbing against the strings. The wheel functions much like a violin bow, and single notes played on the instrument sound similar to those of a violin.",
-                          picture="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Louvet_Drehleier.JPG/500px-Louvet_Drehleier.JPG",
                           region=region4, user_name="Mark Ronson")
 
 session.add(instrument13)
 session.commit()
 
-instrument14 = Instrument(user_id=6, name="Bodhran",
+instrument14 = Instrument(user_id=8, name="Hurdy-gurdy",
+                          description="The hurdy-gurdy is a stringed instrument that produces sound by a hand crank-turned, rosined wheel rubbing against the strings. The wheel functions much like a violin bow, and single notes played on the instrument sound similar to those of a violin.",
+                          picture="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Louvet_Drehleier.JPG/500px-Louvet_Drehleier.JPG",
+                          region=region4, user_name="Mark Ronson")
+
+session.add(instrument14)
+session.commit()
+
+instrument15 = Instrument(user_id=6, name="Bodhran",
                           description="Bodhran is an Irish frame drum.",
                           picture="https://upload.wikimedia.org/wikipedia/commons/1/1a/Bodhran.jpg",
                           region=region4, user_name="Lady Gaga")
 
-session.add(instrument14)
+session.add(instrument15)
 session.commit()
 
 # Instruments in Oceania
@@ -174,28 +174,28 @@ region5 = Region(name="Oceania")
 session.add(region5)
 session.commit()
 
-instrument15 = Instrument(user_id=14, name="Didgeridoo",
+instrument16 = Instrument(user_id=14, name="Didgeridoo",
                           description="From indigenous Australians comes the ever exotic didgeridoo which is rumored to have been around for over a thousand years.",
                           picture="https://images-na.ssl-images-amazon.com/images/I/61ffnSrQkAL._SL1500_.jpg",
                           region=region5, credit="Kent State University", user_name="Queen Elizabeth")
 
-session.add(instrument15)
+session.add(instrument16)
 session.commit()
 
-instrument16 = Instrument(user_id=8, name="Mbita-Ni-Tanga",
+instrument17 = Instrument(user_id=8, name="Mbita-Ni-Tanga",
                           description="From Fiji, nose flutes are played by blowing the instrument with the nose rather than the mouth. Holding one nostril shut with thumb or finger, the musician blows into a small hole near the top of the instrument with the other nostril.",
                           picture="https://www.metmuseum.org/toah/images/hb/hb_89.4.795.jpg",
                           region=region5, credit="The Met", user_name="Mark Ronson")
 
-session.add(instrument16)
+session.add(instrument17)
 session.commit()
 
-instrument17 = Instrument(user_id=8, name="Taonga puro",
+instrument18 = Instrument(user_id=8, name="Taonga puro",
                           description="The instruments previously fulfilled many functions within Maori society including a call to arms, dawning of the new day, communications with the gods and the planting of crops",
                           picture="https://static1.squarespace.com/static/53218f7ce4b01580f3c745e4/5af8f5118a922d06174e5420/5af8f670aa4a99214407bf2a/1526287501130/_43O9926.JPG?format=2500w",
                           region=region5, credit="Rob Thorne", user_name="Mark Ronson")
 
-session.add(instrument17)
+session.add(instrument18)
 session.commit()
 
 # Instruments in North america
@@ -205,31 +205,31 @@ region6 = Region(name="North America")
 session.add(region6)
 session.commit()
 
-instrument18 = Instrument(user_id=13, name="Guitarron",
+instrument19 = Instrument(user_id=13, name="Guitarron",
                           description="The Guitarron is a large bass guitar. Guitarron translates to large guitar. The suffix means big or large. It has 6 strings.",
                           picture="http://content.westmusic.com/wp-content/uploads/2019/02/Guitarron.png",
                           region=region6, credit="West Music", user_name="Karl Marx")
 
 
-session.add(instrument18)
+session.add(instrument19)
 session.commit()
 
-instrument19 = Instrument(user_id=6, name="American Flute",
+instrument20 = Instrument(user_id=6, name="American Flute",
                           description="The Native American flute is a flute that is held in front of the player, has open finger holes, and has two chambers: one for collecting the breath of the player and a second chamber which creates sound. The player breathes into one end of the flute without the need for an embouchure.",
                           picture="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Native_American_Flute_by_Chief_Arthur_Two_Crows.jpg/500px-Native_American_Flute_by_Chief_Arthur_Two_Crows.jpg",
                           region=region6, credit="Wikipedia", user_name="Lady Gaga")
 
 
-session.add(instrument19)
+session.add(instrument20)
 session.commit()
 
-instrument20 = Instrument(user_id=13, name="Water Drum",
+instrument21 = Instrument(user_id=13, name="Water Drum",
                           description="Water drums are a category of membranophone characterized by the filling of the drum chamber with some amount of water to create a unique resonant sound. Water drums are used all over the world, including American Indian music, and are made of various materials, with a membrane stretched over a hard body such as a metal, clay, or wooden pot.",
                           picture="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Wassertrommeln.jpg/440px-Wassertrommeln.jpg",
                           region=region6, credit="Wikipedia", user_name="Karl Marx")
 
 
-session.add(instrument20)
+session.add(instrument21)
 session.commit()
 
 print ("added instruments to DB!")
