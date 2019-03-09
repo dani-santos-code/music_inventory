@@ -43,8 +43,6 @@ To get the app running, type in `python main.py` which will run the website at h
     ├── database_setup.py
     ├── loadinstruments.py
     ├── main.py
-    ├── dummy_data
-        ├── loadinstruments.py
     ├── static
     │   ├── css
     │   │   ├── bg-image.jpeg
