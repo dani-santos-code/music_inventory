@@ -27,24 +27,31 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 
 6. Run `cd /vagrant/catalog`.
 
+7. You can skip to the next section ("Running the web app") and get the app running, but in case you're curious about what happens behind the scenes, keep reading below. ⬇️
+
 **IMPORTANT**:
-When you build your virtual machine, the Vagrantfile will run several package management (`pip`) commands that will install all required dependencies for you behind the scenes automatically, such as:
+When you build your virtual machine, the Vagrantfile runs several package management (`pip`) commands that will install all required dependencies for you behind the scenes automatically, such as:
 - authlib
 - google-api-python-client
 - google-auth
 - flake8
 
-There is no need to install the dependencies manually. 😄
+The configuration of the Vagrantfile was provided by [Udacity](https://github.com/udacity/fullstack-nanodegree-vm)
+
+Note that `instruments.db`(containing SQL *INSERT* commands to populate the tables) has already been provided for you on this git repo, so there's no need to load dummy data yourself. 😎
+
+*Careful*: ☠️☠️☠️ If you run DB files manually you might run into problems.
+In case that happens, please delete the file `instruments.db` and run `python loadinstruments.py`
+
+*Summarizing*: There is no need to install the dependencies or the dummy data yourself. 🔆
 
 *Notice*:  In case you want to stop the machine from running on localhost, type in `sudo halt`.Then run, `vagrant halt` to shut down the VM.
-
-## Linting:
-
-To make sure PEP style is being followed, you can run `flake8`. If it returns nothing, it means all `.py` files have been correctly formatted.
 
 ## Running the webapp:
 
 To get the app running, type in `python main.py` which will run the website at http://localhost:8000
+
+*Make sure you're in the right directory (`/vagrant/catalog`)*
 
 ## Additional Information About the Project
 
@@ -89,14 +96,9 @@ To get the app running, type in `python main.py` which will run the website at h
         └── south_america.html
  ```
 
-### Dummy Data and DB set-up
+### Linting
 
-`instruments.db` has already been generated, so there's no need to
-load dummy data. The setup occurs automatically, when the app is run.
-
-*Notice*: ☠️☠️☠️ If you run DB files manually you might run into problems.
-In case that happens, please delete the file `instruments.db`
-and run `python loadinstruments.py`
+To make sure PEP style is being followed, you can run `flake8`. If it returns nothing, it means all `.py` files have been correctly formatted.
 
 
 ### API Endpoints
