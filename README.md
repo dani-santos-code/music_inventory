@@ -4,8 +4,9 @@ This is an inventory app where exotic music instruments are stored, edited, dele
 As a user that's not registered, you can only see the instruments and its details,
 either by accessing the web page or by accessing the provided endpoints.
 
-In order to add instruments to the inventory, edit or delete them, you
-need to sign in with your Google Account.
+In order to add instruments to the inventory, edit or delete them, sign in with your Google Account.
+
+You can only edit or delete instruments added by you. 
 
 It is a project for the [Full Stack Web Development
 Nanodegree @Udacity](https://eu.udacity.com/course/full-stack-web-developer-nanodegree--nd004)
