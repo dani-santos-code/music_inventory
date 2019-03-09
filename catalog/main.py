@@ -110,6 +110,7 @@ def logout():
 
     return redirect(BASE_URI, code=302)
 
+
 # =====> GOOGLE AUTH REDIRECT <=====
 # Stores the OAuth state parameter in the Flask session using AUTH_STATE_KEY
 @app.route('/gCallback')
