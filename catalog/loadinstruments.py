@@ -48,15 +48,20 @@ region2 = Region(name="South America")
 session.add(region2)
 session.commit()
 
-instrument1 = Instrument(user_id=2, name="Idiophones",
+instrument3 = Instrument(user_id=2, name="Idiophones",
                          description="Idiophones produce musical sound by vibrating when the body of the instrument itself is struck, stamped, shaken, scraped, rubbed, or plucked.",
                          picture="https://cdn.britannica.com/s:700x450/91/150591-004-44609FB8.jpg",
                          region=region2, credit="Britannica", user_name="R. Kelley")
 
-instrument2 = Instrument(user_id=3, name="Membranophones",
+
+session.add(instrument3)
+session.commit()
+
+instrument4 = Instrument(user_id=3, name="Membranophones",
                          description="Membranophones are instruments that have a skin or membrane stretched over a frame; musical sound is produced by striking or rubbing the membrane or by setting the membrane into motion with sound waves (as with a kazoo).",
                          picture="https://cdn.britannica.com/s:300x300/89/150589-004-B285F698.jpg",
                          region=region2, credit="Britannica", user_name="Lady Gaga")
+
 session.add(instrument2)
 session.commit()
 
@@ -67,36 +72,44 @@ region3 = Region(name="Asia")
 session.add(region3)
 session.commit()
 
-instrument1 = Instrument(user_id=1, name="Ocarina",
+instrument5 = Instrument(user_id=1, name="Ocarina",
                          description="Originating within China approximately 12,000 years ago, the ocarina is an ancient flute instrument usually made from ceramic or clay. ",
                          picture="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/2016-01_Ocarina_front.jpg/500px-2016-01_Ocarina_front.jpg",
                          region=region3, credit="Wikipedia", user_name="Freddy Meercury")
 
-session.add(instrument1)
+session.add(instrument5)
 session.commit()
 
-instrument2 = Instrument(user_id=2, name="Ghungroos",
+instrument6 = Instrument(user_id=2, name="Ghungroos",
                          description="An ancient and classic instrument from India, a ghungroos is a metallic anklet that Indian dancers place around their feet while performing  in ceremonies.",
                          picture="https://4.imimg.com/data4/DN/PQ/MY-107458/ghungroo-500x500.jpg",
                          region=region3, user_name="David Bowie")
 
-session.add(instrument2)
+session.add(instrument6)
 session.commit()
 
-instrument3 = Instrument(user_id=2, name="Erhu",
+instrument7 = Instrument(user_id=2, name="Erhu",
                          description="The erhu is a two-stringed bowed musical instrument and is known in the Western world as the 'Chinese violin' or a 'Chinese two-stringed fiddle.'",
                          picture="https://hamiltonphilharmonic.files.wordpress.com/2014/05/erhu1.jpg",
                          region=region3, credit="Hamilton Philarmonic", user_name="Mark Robson")
 
-session.add(instrument3)
+session.add(instrument7)
 session.commit()
 
-instrument4 = Instrument(user_id=2, name="Guzheng",
-                         description="TThe guzheng is a 21-stringed zither, which is an instrument that has strings stretched over movable bridges across a long, flat body. Originally made with silk strings, contemporary guzhengs now have strings made from metal-nylon. The instrument is usually plucked with shells of hawksbill.",
+instrument8 = Instrument(user_id=2, name="Guzheng",
+                         description="The guzheng is a 21-stringed zither, which is an instrument that has strings stretched over movable bridges across a long, flat body. Originally made with silk strings, contemporary guzhengs now have strings made from metal-nylon. The instrument is usually plucked with shells of hawksbill.",
                          picture="https://hamiltonphilharmonic.files.wordpress.com/2014/05/931.jpg?w=600&h=450",
                          region=region3, credit="Hamilton Philarmonic", user_name="Alfredo Manfredi")
 
-session.add(instrument4)
+session.add(instrument8)
+session.commit()
+
+instrument9 = Instrument(user_id=3, name="Pipa",
+                         description="The pipa is a four-stringed Chinese musical instrument. The instrument has a pear-shaped wooden body with frets like those on a guitar. It sounds like a banjo.",
+                         picture="https://images.chinahighlights.com/2012/10/ba4d7f5b39574dba921f4648_ch_300x240.jpg",
+                         region=region3, credit="China Highlights", user_name="Jan Lee")
+
+session.add(instrument9)
 session.commit()
 
 # Instruments in Europe
@@ -106,12 +119,12 @@ region4 = Region(name="Europe")
 session.add(region4)
 session.commit()
 
-instrument1 = Instrument(user_id=3, name="Octobass",
+instrument10 = Instrument(user_id=3, name="Octobass",
                          description="Hector Berlioz was an ardent admirer of these massive, three-stringed, whale-like instruments, referring to them in his famous Treatise on Orchestration.",
                          picture="https://rbma.imgix.net/_NRK4545_copy_1600_1067_90.624993dd.jpg?auto=format&w=400",
                          region=region4, user_name="Mark Ronson")
 
-session.add(instrument1)
+session.add(instrument10)
 session.commit()
 
 # Instruments in Oceania
@@ -121,12 +134,12 @@ region5 = Region(name="Oceania")
 session.add(region5)
 session.commit()
 
-instrument1 = Instrument(user_id=1, name="Didgeridoo",
+instrument11 = Instrument(user_id=1, name="Didgeridoo",
                          description="From indigenous Australians comes the ever exotic didgeridoo which is rumored to have been around for over a thousand years.",
                          picture="https://images-na.ssl-images-amazon.com/images/I/61ffnSrQkAL._SL1500_.jpg",
                          region=region5, credit="Kent State University", user_name="Queen Elizabeth")
 
-session.add(instrument1)
+session.add(instrument11)
 session.commit()
 
 # Instruments in North america
@@ -136,13 +149,13 @@ region6 = Region(name="North America")
 session.add(region6)
 session.commit()
 
-instrument1 = Instrument(user_id=1, name="Guitarron",
-                         description="The Guitarron is a large bass guitar. Guitarron translates to large guitar. The suffix means big or large. It has 6 strings.",
-                         picture="http://content.westmusic.com/wp-content/uploads/2019/02/Guitarron.png",
-                         region=region6, credit="West Music", user_name="Karl Marx")
+instrument12 = Instrument(user_id=1, name="Guitarron",
+                          description="The Guitarron is a large bass guitar. Guitarron translates to large guitar. The suffix means big or large. It has 6 strings.",
+                          picture="http://content.westmusic.com/wp-content/uploads/2019/02/Guitarron.png",
+                          region=region6, credit="West Music", user_name="Karl Marx")
 
 
-session.add(instrument1)
+session.add(instrument12)
 session.commit()
 
 print ("added instruments to DB!")
