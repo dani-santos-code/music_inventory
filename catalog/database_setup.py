@@ -20,7 +20,7 @@ class Region(Base):
         return {
            'name': self.name,
            'id': self.id,
-       }
+        }
 
 
 class Instrument(Base):
