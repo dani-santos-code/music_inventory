@@ -6,7 +6,7 @@ either by accessing the web page or by accessing the provided endpoints.
 
 In order to add instruments to the inventory, edit or delete them, sign in with your Google Account.
 
-You can only edit or delete instruments added by you. 
+You can only edit or delete instruments added by you.
 
 It is a project for the [Full Stack Web Development
 Nanodegree @Udacity](https://eu.udacity.com/course/full-stack-web-developer-nanodegree--nd004)
@@ -37,8 +37,10 @@ When you build your virtual machine, the Vagrantfile runs several package manage
 - google-auth
 - flake8
 
-The configuration of the Vagrantfile was provided by [Udacity](https://github.com/udacity/fullstack-nanodegree-vm)
+The basic configuration of the Vagrantfile was provided by [Udacity](https://github.com/udacity/fullstack-nanodegree-vm)
 
+*More packages were added to suit the requirements of this project.*
+ 
 Note that `instruments.db`(containing SQL *INSERT* commands to populate the tables) has already been provided for you on this git repo, so there's no need to load dummy data yourself. 😎
 
 *Careful*: ☠️☠️☠️ If you run DB files manually you might run into problems.
