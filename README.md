@@ -1,5 +1,5 @@
 # About the Project
-This is an inventory app where exotic music instruments are stored, edited, deleted. 
+This is an inventory app where exotic music instruments are stored, edited, deleted.
 
 As a user that's not registered, you can only see the instruments and its details,
 either by accessing the web page or by accessing the provided endpoints.
@@ -7,7 +7,7 @@ either by accessing the web page or by accessing the provided endpoints.
 In order to add instruments to the inventory, edit or delete them, you
 need to sign in with your Google Account.
 
-It is a project for the Full Stack Web Development 
+It is a project for the Full Stack Web Development
 Nanodegree @Udacity (https://eu.udacity.com/course/full-stack-web-developer-nanodegree--nd004)
 
 This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in combination with Vagrant. See instructions to get it running.
@@ -43,6 +43,8 @@ To get the app running, type in `python main.py` which will run the website at h
     ├── database_setup.py
     ├── loadinstruments.py
     ├── main.py
+    ├── dummy_data
+        ├── loadinstruments.py
     ├── static
     │   ├── css
     │   │   ├── bg-image.jpeg
@@ -76,11 +78,10 @@ To get the app running, type in `python main.py` which will run the website at h
 
 ### Dummy Data and DB set-up
 
-When building up your Vagrant machine, the DB is set-up 
-and the dummy data is loaded automatically. So, there's
-no need to run the files related to those functions.
+`instruments.db` has already been generated, so there's no need to
+load dummy data. The setup occurs automatically, when the app is run.
 
-*Notice*: ☠️☠️☠️ If you run them manually you might run into problems.
+*Notice*: ☠️☠️☠️ If you run DB files manually you might run into problems.
 In case that happens, please delete the file `instruments.db`
 and run `python loadinstruments.py`
 
@@ -101,6 +102,3 @@ There are only READ endpoints:
 
 **Instrument Details**
 - /details/**id**/JSON --> Endpoint to see details of any given instrument, by its id
-
-
-    
