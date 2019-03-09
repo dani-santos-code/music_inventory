@@ -12,29 +12,33 @@
 	</head>
 	<body>
 		<div class="navbar">
-			<a href="/"><div class="logo"><img class="logo_img" src="/static/images/logo.svg" alt="logo"></div></a>
+			<a href="/"><div class="navbar__logo"><img class="logo__img" src="/static/images/logo.svg" alt="logo"></div></a>
 			{% if user %}
-			<div class="logged">
-				<a href="/dashboard"><div><img class="avatar_img" src='{{user.picture}}' alt="profile picture"/></div></a>
+			<div class="navbar__logged">
+				<a href="/dashboard"><div><img class="avatar__img" src='{{user.picture}}' alt="profile picture"/></div></a>
 				{% if user.name|length > 10 %}
 					<div class="avatar">{{user.name[:9]}}</div>
 				{% else %}
 					<div class="avatar">{{user.name}}</div>
 				{% endif %}
-				<div class="separator">|</diV>
+				<div class="avatar__separator">|</diV>
 					<a href="/logout">
-							<div class="logout">Logout</div>
+							<div class="navbar__logout">Logout</div>
 					</a>
 			</div>
 			{% else %}
 				<a href="/login">
-					<div class="login">Login</div>
+					<div class="navbar__login">Login</div>
 				</a>
 		 {% endif %}
   	</div>
 		<div class="instrumentsbg">
 			<h1>{{title}}</h1>
-			<a href="https://www.freepik.com/free-photos-vectors/music" target="_blank" rel="noopener noreferrer">Music vector created by freepik - www.freepik.com</a>
+			<a href="https://www.freepik.com/free-photos-vectors/music"
+               target="_blank"
+               rel="noopener noreferrer">
+                Music vector created by freepik - www.freepik.com
+            </a>
 		</div>
 		  {% with messages = get_flashed_messages() %}
 				<div>
