@@ -28,7 +28,13 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 
 6. Run `cd /vagrant/catalog`.
 
-7. You can skip to the next section ("Running the web app") and get the app running, but in case you're curious about what happens behind the scenes, keep reading below. ⬇️
+7. In case you're not following these steps precisely and are running it from the Udacity Full-Stack VM repo, make sure to run the following commands:
+- `sudo pip install authlib`
+- `sudo pip install google-api-python-client`
+- `sudo pip install google-auth`
+- `sudo pip install flake8` (optional - if you want to lint the file)
+
+8. You can skip to the next section ("Running the web app") and get the app running, but in case you're curious about what happens behind the scenes, keep reading below. ⬇️
 
 **IMPORTANT**:
 When you build your virtual machine, the Vagrantfile runs several package management (`pip`) commands that will install all required dependencies for you behind the scenes automatically, such as:
@@ -40,7 +46,7 @@ When you build your virtual machine, the Vagrantfile runs several package manage
 The basic configuration of the Vagrantfile was provided by [Udacity](https://github.com/udacity/fullstack-nanodegree-vm)
 
 *More packages were added to suit the requirements of this project.*
- 
+
 Note that `instruments.db`(containing SQL *INSERT* commands to populate the tables) has already been provided for you on this git repo, so there's no need to load dummy data yourself. 😎
 
 *Careful*: ☠️☠️☠️ If you run DB files manually you might run into problems.
