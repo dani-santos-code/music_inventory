@@ -80,6 +80,11 @@ When building up your Vagrant machine, the DB is set-up
 and the dummy data is loaded automatically. So, there's
 no need to run the files related to those functions.
 
+*Notice*: ☠️☠️☠️ If you run them manually you might run into problems.
+In case that happens, please delete the file `instruments.db`
+and run `python loadinstruments.py`
+
+
 ### API Endpoints
 There are only READ endpoints:
 
