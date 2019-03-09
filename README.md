@@ -21,11 +21,26 @@ This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in
 3. Clone the current repo by running
 `git clone git@github.com:dani-santos-code/music_inventory.git`
 
-4. Run `vagrant up` followed by `vagrant ssh`.
+4. On your terminal, type in `cd music_inventory`.
 
-5. Run `cd /vagrant/catalog`.
+5. Run `vagrant up` followed by `vagrant ssh`.
+
+6. Run `cd /vagrant/catalog`.
+
+**IMPORTANT**:
+When you build your virtual machine, the Vagrantfile will run several package management (`pip`) commands that will install all required dependencies for you behind the scenes automatically, such as:
+- authlib
+- google-api-python-client
+- google-auth
+- flake8
+
+There is no need to install the dependencies manually. 😄
 
 *Notice*:  In case you want to stop the machine from running on localhost, type in `sudo halt`.Then run, `vagrant halt` to shut down the VM.
+
+## Linting:
+
+To make sure PEP style is being followed, you can run `flake8`. If it returns nothing, it means all `.py` files have been correctly formatted.
 
 ## Running the webapp:
 

@@ -35,6 +35,7 @@ Vagrant.configure("2") do |config|
     pip2 install authlib
     pip2 install google-api-python-client
     pip2 install google-auth
+    pip2 install flake8
 
     su postgres -c 'createuser -dRS vagrant'
     su vagrant -c 'createdb'

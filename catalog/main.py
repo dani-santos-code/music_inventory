@@ -443,41 +443,43 @@ def add_new_instrument():
 def edit_instrument(instrument_id):
     if is_logged_in():
         current_user = get_user_info()
-        instrument_to_edit = session.\
+        edited_instrument = session.\
             query(Instrument).filter_by(id=instrument_id).one()
-        if float(current_user['id']) == float(instrument_to_edit.user_id):
+        if float(current_user['id']) == float(edited_instrument.user_id):
             if request.method == 'POST':
                 if request.form['name']:
-                    instrument_to_edit.name = request.form['name']
+                    edited_instrument.name = request.form['name']
                 if request.form['region']:
-                    instrument_to_edit.region = session.\
-                        query(Region).filter_by(name=request.form['region']).one()
+                    edited_instrument.region = session.\
+                        query(Region).filter_by(
+                            name=request.form['region']).one()
                 if request.form['description']:
-                    instrument_to_edit.description = request.form['description']
+                    edited_instrument.description = request.form['description']
                 if request.form['picture']:
-                    instrument_to_edit.picture = request.form['picture']
+                    edited_instrument.picture = request.form['picture']
                 if request.form['credit']:
-                    instrument_to_edit.credit = request.form['credit']
-                session.add(instrument_to_edit)
+                    edited_instrument.credit = request.form['credit']
+                session.add(edited_instrument)
                 session.commit()
                 flash('Instrument Successfully Edited')
-                return redirect(url_for('show_instrument_details',
-                                    instrument_id=int(instrument_to_edit.id),
-                                    instrument=instrument_to_edit))
+                return redirect(url_for(
+                               'show_instrument_details',
+                               instrument_id=int(edited_instrument.id),
+                               instrument=edited_instrument))
         else:
             flash('You are not authorized to edit this instrument!')
         return render_template('editinstrument.html',
-                                user=current_user,
-                                instrument=instrument_to_edit,
-                                title="Edit an Instrument")
+                               user=current_user,
+                               instrument=edited_instrument,
+                               title="Edit an Instrument")
     elif not is_logged_in():
         return redirect(url_for('show_login'))
     else:
         current_user = get_user_info()
         return render_template('editinstrument.html',
-                                user=current_user,
-                                instrument=instrument_to_edit,
-                                title="Edit an Instrument")
+                               user=current_user,
+                               instrument=edited_instrument,
+                               title="Edit an Instrument")
 
 # Delete an instrument
 @app.route('/delete/<int:instrument_id>', methods=['GET', 'POST'])
@@ -497,17 +499,17 @@ def delete_instrument(instrument_id):
                 return redirect(url_for('show_dashboard'))
             else:
                 current_user = get_user_info()
-                return render_template('deleteinstrument.html',
-                                       instrument_to_delete=instrument_to_delete,
-                                       user=current_user,
-                                       title="Delete Instrument")
+                return render_template(
+                                      'deleteinstrument.html',
+                                      instrument=instrument_to_delete,
+                                      user=current_user,
+                                      title="Delete Instrument")
         else:
             flash("You don't have permission to delete this item!")
             return render_template('deleteinstrument.html',
-                                   instrument_to_delete=instrument_to_delete,
+                                   instrument=instrument_to_delete,
                                    user=current_user,
                                    title="Delete Instrument")
-
 
 
 if __name__ == '__main__':

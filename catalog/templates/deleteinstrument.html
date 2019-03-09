@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h2> Are you sure you want to delete {{instrument_to_delete.name}}? </h2>
+<h2> Are you sure you want to delete {{instrument.name}}? </h2>
 
 <form action="#" method = 'post'>
 	<a href = '{{url_for('show_regions')}}'>
