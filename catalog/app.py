@@ -18,7 +18,6 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
 
 # Connect to Database and create database session
 engine = create_engine('sqlite:///instruments.db?check_same_thread=False')
@@ -33,24 +32,6 @@ https://docs.sqlalchemy.org/en/latest
 /orm/contextual.html"""
 
 session = scoped_session(DBSession)
-
-# OAuth Credentials
-# Notice: Ideally, this should be in a
-# .env file that would be transferred among team members
-# ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
-# AUTHORIZATION_URL = 'https://accounts.google.com/o/' \
-#                     'oauth2/v2/auth?access_type=offline&prompt=consent'
-# AUTHORIZATION_SCOPE = 'openid email profile'
-# AUTH_REDIRECT_URI = 'http://localhost:8000/gCallback'
-# BASE_URI = 'http://localhost:8000'
-# CLIENT_ID = '359568122134-niii8bh1f3l32b466s6qna4867lbq45p.' \
-#             'apps.googleusercontent.com'
-# CLIENT_SECRET = 'T1iIGSdpiw9Tj-gPCnKQdyNy'
-#
-# # Session credentials
-# AUTH_TOKEN_KEY = 'auth_token'
-# USER_INFO_KEY = 'user_info'
-
 
 # =====> UTILITIES <=====
 
@@ -518,7 +499,6 @@ def delete_instrument(instrument_id):
 
 
 if __name__ == '__main__':
-    db.create_all()
     port = int(os.environ.get("PORT", 8000))
     app.run(
         host="0.0.0.0",

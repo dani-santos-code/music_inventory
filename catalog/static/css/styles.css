@@ -217,6 +217,7 @@ input, textarea, select{
   margin-bottom: -21px;
   border: solid 5px #85f5ee;
   background-color: #ffffff;
+  object-fit: cover;
 }
 
 .instrument__wrapper {
@@ -323,7 +324,6 @@ input, textarea, select{
 .details__image_wrapper {
   background-color: white;
   width: 90%;
-  height: 70%;
   margin: 10px auto;
   display: flex;
   justify-content: center;
