@@ -7,13 +7,18 @@ import random
 import string
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
+from flask_sqlalchemy import SQLAlchemy
 from authlib.client import OAuth2Session
 import google.oauth2.credentials
 import googleapiclient.discovery
 
 from database_setup import Base, Region, Instrument
+from config import Config
 
 app = Flask(__name__)
+app.config.from_object(Config)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 
 # Connect to Database and create database session
 engine = create_engine('sqlite:///instruments.db?check_same_thread=False')
@@ -32,19 +37,19 @@ session = scoped_session(DBSession)
 # OAuth Credentials
 # Notice: Ideally, this should be in a
 # .env file that would be transferred among team members
-ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
-AUTHORIZATION_URL = 'https://accounts.google.com/o/' \
-                    'oauth2/v2/auth?access_type=offline&prompt=consent'
-AUTHORIZATION_SCOPE = 'openid email profile'
-AUTH_REDIRECT_URI = 'http://localhost:8000/gCallback'
-BASE_URI = 'http://localhost:8000'
-CLIENT_ID = '359568122134-niii8bh1f3l32b466s6qna4867lbq45p.' \
-            'apps.googleusercontent.com'
-CLIENT_SECRET = 'T1iIGSdpiw9Tj-gPCnKQdyNy'
-
-# Session credentials
-AUTH_TOKEN_KEY = 'auth_token'
-USER_INFO_KEY = 'user_info'
+# ACCESS_TOKEN_URI = 'https://www.googleapis.com/oauth2/v4/token'
+# AUTHORIZATION_URL = 'https://accounts.google.com/o/' \
+#                     'oauth2/v2/auth?access_type=offline&prompt=consent'
+# AUTHORIZATION_SCOPE = 'openid email profile'
+# AUTH_REDIRECT_URI = 'http://localhost:8000/gCallback'
+# BASE_URI = 'http://localhost:8000'
+# CLIENT_ID = '359568122134-niii8bh1f3l32b466s6qna4867lbq45p.' \
+#             'apps.googleusercontent.com'
+# CLIENT_SECRET = 'T1iIGSdpiw9Tj-gPCnKQdyNy'
+#
+# # Session credentials
+# AUTH_TOKEN_KEY = 'auth_token'
+# USER_INFO_KEY = 'user_info'
 
 
 # =====> UTILITIES <=====
@@ -83,12 +88,12 @@ def no_cache(view):
 @app.route('/login')
 @no_cache
 def show_login():
-    oauth_session = OAuth2Session(CLIENT_ID,
-                                  CLIENT_SECRET,
-                                  scope=AUTHORIZATION_SCOPE,
-                                  redirect_uri=AUTH_REDIRECT_URI)
+    oauth_session = OAuth2Session(Config.CLIENT_ID,
+                                  Config.CLIENT_SECRET,
+                                  scope=Config.AUTHORIZATION_SCOPE,
+                                  redirect_uri=Config.AUTH_REDIRECT_URI)
     uri, state = oauth_session.\
-        create_authorization_url(AUTHORIZATION_URL)
+        create_authorization_url(Config.AUTHORIZATION_URL)
     state = "".join(random.choice
                     (string.ascii_uppercase + string.digits)
                     for x in range(32))
@@ -104,11 +109,11 @@ def logout():
     state = "".join(random.choice
                     (string.ascii_uppercase + string.digits)
                     for x in range(32))
-    login_session.pop(AUTH_TOKEN_KEY, None)
+    login_session.pop(Config.AUTH_TOKEN_KEY, None)
     login_session.pop(state, None)
-    login_session.pop(USER_INFO_KEY, None)
+    login_session.pop(Config.USER_INFO_KEY, None)
 
-    return redirect(BASE_URI, code=302)
+    return redirect(Config.BASE_URI, code=302)
 
 
 # =====> GOOGLE AUTH REDIRECT <=====
@@ -117,21 +122,21 @@ def logout():
 @no_cache
 def google_auth_redirect():
     state = request.args.get('state', default=None, type=None)
-    oauth_session = OAuth2Session(CLIENT_ID, CLIENT_SECRET,
-                                  scope=AUTHORIZATION_SCOPE, state=state,
-                                  redirect_uri=AUTH_REDIRECT_URI)
+    oauth_session = OAuth2Session(Config.CLIENT_ID, Config.CLIENT_SECRET,
+                                  scope=Config.AUTHORIZATION_SCOPE, state=state,
+                                  redirect_uri=Config.AUTH_REDIRECT_URI)
     oauth2_tokens = oauth_session.\
-        fetch_access_token(ACCESS_TOKEN_URI,
+        fetch_access_token(Config.ACCESS_TOKEN_URI,
                            authorization_response=request.url)
-    login_session[AUTH_TOKEN_KEY] = oauth2_tokens
-    return redirect('{}/dashboard'.format(BASE_URI), code=302)
+    login_session[Config.AUTH_TOKEN_KEY] = oauth2_tokens
+    return redirect('{}/dashboard'.format(Config.BASE_URI), code=302)
 
 
 # =====> GOOGLE USER INFO/CREDENTIALS <=====
 
 # Checks if user is logged in
 def is_logged_in():
-    return True if AUTH_TOKEN_KEY in login_session else False
+    return True if Config.AUTH_TOKEN_KEY in login_session else False
 
 
 # builds user credentials
@@ -139,13 +144,13 @@ def build_credentials():
     if not is_logged_in():
         raise Exception('User must be logged in')
 
-    oauth2_tokens = login_session[AUTH_TOKEN_KEY]
+    oauth2_tokens = login_session[Config.AUTH_TOKEN_KEY]
     return google.oauth2.credentials.Credentials(
         oauth2_tokens['access_token'],
         refresh_token=oauth2_tokens['refresh_token'],
-        client_id=CLIENT_ID,
-        client_secret=CLIENT_SECRET,
-        token_uri=ACCESS_TOKEN_URI)
+        client_id=Config.CLIENT_ID,
+        client_secret=Config.CLIENT_SECRET,
+        token_uri=Config.ACCESS_TOKEN_URI)
 
 
 # gets user object
@@ -513,6 +518,9 @@ def delete_instrument(instrument_id):
 
 
 if __name__ == '__main__':
-    app.secret_key = '\xf6\xbc\xe3\xfeD\xb5\xf8=\xd1\x80?\x13Hl\x81\x11'
-    app.debug = True
-    app.run(host='0.0.0.0', port=8000)
+    db.create_all()
+    port = int(os.environ.get("PORT", 8000))
+    app.run(
+        host="0.0.0.0",
+        port=port,
+    )
