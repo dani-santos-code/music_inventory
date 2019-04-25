@@ -462,6 +462,14 @@ input, textarea, select{
 /* Breakpoints for Small Screens */
 
 @media (max-width: 430px) {
+  body {
+    width: 400px;
+  }
+  
+  .navbar__logged {
+    width: 65%;
+    padding-right: 10px;
+  }
 
   .grid__region {
     grid-template-columns: 1fr;
