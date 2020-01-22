@@ -6,4 +6,4 @@ authlib==0.10
 requests>=2.20.0
 google-auth==1.6.3
 google-api-python-client==1.7.11
-flake8 3.7.9
+flake8==3.7.9
