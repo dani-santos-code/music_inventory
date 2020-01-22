@@ -20,7 +20,6 @@ class Region(Base):
            'id': self.id,
         }
 
-
 class Instrument(Base):
     __tablename__ = 'instrument'
 
@@ -46,7 +45,6 @@ class Instrument(Base):
            'credit': self.credit,
            'user_name': self.user_name,
          }
-
 
 engine = create_engine('sqlite:///instruments.db')
 

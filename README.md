@@ -8,51 +8,53 @@ In order to add instruments to the inventory, edit or delete them, sign in with 
 
 You can only edit or delete instruments added by you.
 
-It is a project for the [Full Stack Web Development
+It was a Flask project for the [Full Stack Web Development
 Nanodegree @Udacity](https://eu.udacity.com/course/full-stack-web-developer-nanodegree--nd004)
 
-This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in combination with Vagrant. See instructions to get it running.
+This uses SQlite for dev, but for production, it's running Postgres. For more details about the production, please check: https://github.com/dani-santos-code/linux_server_config
+
+~~This project uses Flask. It runs on a Virtual Machine (Ubuntu) in combination with Vagrant. See instructions to get it running.~~
 
 ## Setting up your environment:
 [DEPRECATED]
- ~~1. This project makes use of a linux-based virtual machine. To install it, go to Virtual Box's website: https://www.virtualbox.org/wiki/Downloads
+ ~~1. This project makes use of a linux-based virtual machine. To install it, go to Virtual Box's website: https://www.virtualbox.org/wiki/Downloads~~
 
-2. We use Vagrant to manage our virtual machine and sync our local repo with VM's repo. Please install vagrant: https://www.vagrantup.com/downloads.html
+~~2. We use Vagrant to manage our virtual machine and sync our local repo with VM's repo. Please install vagrant: https://www.vagrantup.com/downloads.html~~
 
 3. Clone the current repo by running
 `git clone git@github.com:dani-santos-code/music_inventory.git`
 
 4. On your terminal, type in `cd music_inventory`.
 
-5. Run `vagrant up` followed by `vagrant ssh`.
+~~5. Run `vagrant up` followed by `vagrant ssh`.~~
 
-6. Run `cd /vagrant/catalog`.
+~~6. Run `cd /vagrant/catalog`.~~
 
 7. You can skip to the next section ("Running the web app") and get the app running, but in case you're curious about what happens behind the scenes, keep reading below. ⬇️
 
-**IMPORTANT**:
-When you build your virtual machine, the Vagrantfile runs several package management (`pip`) commands that will install all required dependencies for you behind the scenes automatically, such as:
-- authlib
-- google-api-python-client
-- google-auth
-- flake8
+~~**IMPORTANT**:~~
+~~When you build your virtual machine, the Vagrantfile runs several package management (`pip`) commands that will install all required dependencies for you behind the scenes automatically, such as:~~
+~~- authlib~~
+~~- google-api-python-client~~
+~~- google-auth~~
+~~- flake8~~
 
-The basic configuration of the Vagrantfile was provided by [Udacity](https://github.com/udacity/fullstack-nanodegree-vm)
+~~The basic configuration of the Vagrantfile was provided by [Udacity](https://github.com/udacity/fullstack-nanodegree-vm)~~
 
-*More packages were added to suit the requirements of this project.*
+~~*More packages were added to suit the requirements of this project.*~~
 
-Note that `instruments.db`(containing SQL *INSERT* commands to populate the tables) has already been provided for you on this git repo, so there's no need to load dummy data yourself. 😎
+~~Note that `instruments.db`(containing SQL *INSERT* commands to populate the tables) has already been provided for you on this git repo, so there's no need to load dummy data yourself. 😎~~
 
 *Careful*: ☠️☠️☠️ If you run DB files manually you might run into problems.
+
 In case that happens, please delete the file `instruments.db` and run `python loadinstruments.py`
 
-*Summarizing*: There is no need to install the dependencies or the dummy data yourself. 🔆
+~~*Summarizing*: There is no need to install the dependencies or the dummy data yourself. 🔆~~
 
-*Notice*:  In case you want to stop the machine from running on localhost, type in `sudo halt`.Then run, `vagrant halt` to shut down the VM.~~
+~~*Notice*:  In case you want to stop the machine from running on localhost, type in `sudo halt`.Then run, `vagrant halt` to shut down the VM.~~
 
 ## Running the webapp:
 
-- If you don't have Potsgres installed, go to https://www.postgresql.org/download/
 - Make sure you have `pip`, Python's package manager installed (https://pip.pypa.io/en/stable/installing/)
 - Install `virtualenv` to manage your environment by running `pip install virtualenv` (https://virtualenv.pypa.io/en/stable/installation/)
 - Go to the main folder `music_inventory`
@@ -60,7 +62,7 @@ In case that happens, please delete the file `instruments.db` and run `python lo
 - Activate the environment by running `source musicinvt_env/bin/activate`
 - Install the dependencies by running `pip install -r requirements.txt`
   
-Finally, to get the app running, go to the folder `catalog` and type in `python app.py` which will run the website at http://localhost:8000
+Finally, to get the app running, go to the folder `catalog` and type in `python3 app.py` which will run the website at http://localhost:8000
 
 *Make sure you're in the right directory (`/vagrant/catalog`)*
 
