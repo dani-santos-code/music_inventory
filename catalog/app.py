@@ -7,7 +7,6 @@ import random
 import string
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
-from flask_sqlalchemy import SQLAlchemy
 from authlib.client import OAuth2Session
 import google.oauth2.credentials
 import googleapiclient.discovery
@@ -104,7 +103,8 @@ def logout():
 def google_auth_redirect():
     state = request.args.get('state', default=None, type=None)
     oauth_session = OAuth2Session(Config.CLIENT_ID, Config.CLIENT_SECRET,
-                                  scope=Config.AUTHORIZATION_SCOPE, state=state,
+                                  scope=Config.AUTHORIZATION_SCOPE,
+                                  state=state,
                                   redirect_uri=Config.AUTH_REDIRECT_URI)
     oauth2_tokens = oauth_session.\
         fetch_access_token(Config.ACCESS_TOKEN_URI,
@@ -139,7 +139,7 @@ def get_user_info():
     credentials = build_credentials()
     oauth2_client = googleapiclient.\
         googleapiclient.build('oauth2', 'v2',
-                        credentials=credentials)
+                              credentials=credentials)
     return oauth2_client.userinfo().get().execute()
 
 
@@ -496,6 +496,7 @@ def delete_instrument(instrument_id):
                                    instrument=instrument_to_delete,
                                    user=current_user,
                                    title="Delete Instrument")
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
