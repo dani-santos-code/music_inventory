@@ -110,4 +110,4 @@ venv.bak/
 .idea
 
 #virtualenv
-._env
+musicinvt_env
