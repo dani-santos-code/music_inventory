@@ -62,7 +62,7 @@ In case that happens, please delete the file `instruments.db` and run `python lo
 - Activate the environment by running `source musicinvt_env/bin/activate`
 - Install the dependencies by running `pip install -r requirements.txt`
   
-Finally, to get the app running, go to the folder `catalog` and type in `python3 app.py` which will run the website at http://localhost:8000
+Finally, to get the app running, go to the folder `catalog` and type in `python app.py` (or `python3 app.py`, if you have Python3 installed) which will run the website at http://localhost:8000
 
 *Make sure you're in the right directory (`/vagrant/catalog`)*
 
