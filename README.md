@@ -45,9 +45,9 @@ This uses SQlite for dev, but for production, it's running Postgres. For more de
 
 ~~Note that `instruments.db`(containing SQL *INSERT* commands to populate the tables) has already been provided for you on this git repo, so there's no need to load dummy data yourself. 😎~~
 
-*Careful*: ☠️☠️☠️ If you run DB files manually you might run into problems.
+~~*Careful*: ☠️☠️☠️ If you run DB files manually you might run into~~ problems.
 
-In case that happens, please delete the file `instruments.db` and run `python loadinstruments.py`
+~~In case that happens, please delete the file `instruments.db` and run `python loadinstruments.py`~~
 
 ~~*Summarizing*: There is no need to install the dependencies or the dummy data yourself. 🔆~~
 
