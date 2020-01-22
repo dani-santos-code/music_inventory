@@ -64,7 +64,7 @@ In case that happens, please delete the file `instruments.db` and run `python lo
   
 Finally, to get the app running, go to the folder `catalog` and type in `python app.py` (or `python3 app.py`, if you have Python3 installed) which will run the website at http://localhost:8000
 
-*Make sure you're in the right directory (`/vagrant/catalog`)*
+~~*Make sure you're in the right directory (`/vagrant/catalog`)*~~
 
 ## Additional Information About the Project
 
@@ -111,8 +111,7 @@ Finally, to get the app running, go to the folder `catalog` and type in `python 
 
 ### Linting
 
-To make sure PEP style is being followed, you can run `flake8`. If it returns nothing, it means all `.py` files have been correctly formatted.
-
+To make sure PEP style is being followed, go to `catalog` and run `flake8`. If it returns nothing, it means all `.py` files have been correctly formatted.
 
 ### API Endpoints
 There are only READ endpoints:
