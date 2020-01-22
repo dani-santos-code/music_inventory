@@ -14,8 +14,8 @@ Nanodegree @Udacity](https://eu.udacity.com/course/full-stack-web-developer-nano
 This project uses Flask and PostGreSQL. It runs on a Virtual Machine (Ubuntu) in combination with Vagrant. See instructions to get it running.
 
 ## Setting up your environment:
-
-1. This project makes use of a linux-based virtual machine. To install it, go to Virtual Box's website: https://www.virtualbox.org/wiki/Downloads
+[DEPRECATED]
+ ~~1. This project makes use of a linux-based virtual machine. To install it, go to Virtual Box's website: https://www.virtualbox.org/wiki/Downloads
 
 2. We use Vagrant to manage our virtual machine and sync our local repo with VM's repo. Please install vagrant: https://www.vagrantup.com/downloads.html
 
@@ -48,11 +48,17 @@ In case that happens, please delete the file `instruments.db` and run `python lo
 
 *Summarizing*: There is no need to install the dependencies or the dummy data yourself. 🔆
 
-*Notice*:  In case you want to stop the machine from running on localhost, type in `sudo halt`.Then run, `vagrant halt` to shut down the VM.
+*Notice*:  In case you want to stop the machine from running on localhost, type in `sudo halt`.Then run, `vagrant halt` to shut down the VM.~~
 
 ## Running the webapp:
 
-To get the app running, type in `python main.py` which will run the website at http://localhost:8000
+- If you don't have Potsgres installed, go to https://www.postgresql.org/download/
+- Make sure you have `pip`, Python's package manager installed (https://pip.pypa.io/en/stable/installing/)
+- Install `virtualenv` to manage your environment by running `pip install virtualenv` (https://virtualenv.pypa.io/en/stable/installation/)
+- Create an environment by running `virtualenv musicinvt_env` (https://virtualenv.pypa.io/en/latest/userguide/)
+- Activate the environment by running `source musicinvt_env/bin/activate`
+- 
+To get the app running, type in `python app.py` which will run the website at http://localhost:8000
 
 *Make sure you're in the right directory (`/vagrant/catalog`)*
 
