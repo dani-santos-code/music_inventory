@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from flask_sqlalchemy import SQLAlchemy
 from authlib.client import OAuth2Session
 import google.oauth2.credentials
-import google-api-python-client.discovery
+import googleapiclient.discovery
 
 from database_setup import Base, Region, Instrument
 from config import Config
@@ -138,7 +138,7 @@ def build_credentials():
 def get_user_info():
     credentials = build_credentials()
     oauth2_client = googleapiclient.\
-        google-api-python-client.build('oauth2', 'v2',
+        googleapiclient.build('oauth2', 'v2',
                         credentials=credentials)
     return oauth2_client.userinfo().get().execute()
 

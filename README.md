@@ -55,10 +55,12 @@ In case that happens, please delete the file `instruments.db` and run `python lo
 - If you don't have Potsgres installed, go to https://www.postgresql.org/download/
 - Make sure you have `pip`, Python's package manager installed (https://pip.pypa.io/en/stable/installing/)
 - Install `virtualenv` to manage your environment by running `pip install virtualenv` (https://virtualenv.pypa.io/en/stable/installation/)
+- Go to the main folder `music_inventory`
 - Create an environment by running `virtualenv musicinvt_env` (https://virtualenv.pypa.io/en/latest/userguide/)
 - Activate the environment by running `source musicinvt_env/bin/activate`
-- 
-To get the app running, type in `python app.py` which will run the website at http://localhost:8000
+- Install the dependencies by running `pip install -r requirements.txt`
+  
+Finally, to get the app running, go to the folder `catalog` and type in `python app.py` which will run the website at http://localhost:8000
 
 *Make sure you're in the right directory (`/vagrant/catalog`)*
 
