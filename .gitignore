@@ -108,3 +108,6 @@ venv.bak/
 
 # pycharmn
 .idea
+
+#virtualenv
+._env
