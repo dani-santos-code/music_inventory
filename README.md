@@ -1,5 +1,7 @@
 # About the Project
-This is an inventory app where exotic music instruments are stored, edited, deleted.
+This is an inventory app where exotic music instruments are stored, edited, deleted. (CRUD)
+
+Backend with Python / Flask. Frontend with JINJA.
 
 As a user that's not registered, you can only see the instruments and its details,
 either by accessing the web page or by accessing the provided endpoints.
